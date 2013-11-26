@@ -45,6 +45,9 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
 		}, {
 			title: 'Finance Manager', ghpage: 'http://aashishkoirala.github.io/financemanager/', ghrepo: 'http://github.com/aashishkoirala/financemanager/',
 			description: 'This is a tool I built to keep track of my personal finances. It lets you create a period budget, and lets you record your transactions so that you can track it against the budget. It is an ASP.NET MVC/Web API SPA web application that uses AngularJS and Bootstrap on the frontend.'
+		}, {
+			title: 'To Do', ghpage: 'http://aashishkoirala.github.io/todo/', ghrepo: 'http://github.com/aashishkoirala/todo/', application: 'http://todo-17.apphb.com',
+			description: 'This is a very light-weight to-do application. It lets you create tasks or "to-do items" - assign due dates (and optionally start dates) to them, categorize them, mark them as started, paused or complete, etc. It is an ASP.NET MVC/Web API SPA web application that uses AngularJS and Bootstrap on the frontend, and uses MongoDB as its database.'
 		}];
     };
 

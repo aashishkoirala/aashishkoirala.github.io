@@ -89,6 +89,9 @@
 					            <h5>{{project.title}}</h5>
 					            <a ng-href="{{project.ghpage}}">GitHub Page</a>&nbsp;|
 					            <a ng-href="{{project.ghrepo}}">GitHub Repo</a>
+					            <span ng-show="project.application != null">
+					                |&nbsp;<a ng-href="{{project.application}}">Application</a>
+					            </span>								
 					            <span ng-show="project.nuget != null">
 					                |&nbsp;<a ng-href="{{project.nuget}}">Nuget</a>
 					            </span><br/><br/>
