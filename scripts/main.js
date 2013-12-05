@@ -48,6 +48,9 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
 		}, {
 			title: 'To Do', ghpage: 'http://aashishkoirala.github.io/todo/', ghrepo: 'http://github.com/aashishkoirala/todo/', application: 'http://todo-17.apphb.com',
 			description: 'This is a very light-weight to-do application. It lets you create tasks or "to-do items" - assign due dates (and optionally start dates) to them, categorize them, mark them as started, paused or complete, etc. It is an ASP.NET MVC/Web API SPA web application that uses AngularJS and Bootstrap on the frontend, and uses MongoDB as its database.'
+		}, {
+			title: 'My Lists', ghpage: 'http://aashishkoirala.github.io/mylists/', ghrepo: 'http://github.com/aashishkoirala/mylists/', application: 'http://mylists.apphb.com',
+			description: 'This is a very light-weight list-maker application. It lets you create lists of things, and cross them off as you need to. The UI is responsive so you can get the same level of experience on the desktop and on mobile devices. This application is ideal for grocery lists, shopping lists, invitee lists and other scenarios where you need checklists. It is an ASP.NET MVC/Web API SPA web application that uses AngularJS and Bootstrap (with Responsiveness) on the frontend, and uses MongoDB as its database.'
 		}];
     };
 
