@@ -51,6 +51,9 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
 		}, {
 			title: 'My Lists', ghpage: 'http://aashishkoirala.github.io/mylists/', ghrepo: 'http://github.com/aashishkoirala/mylists/', application: 'http://mylists.apphb.com',
 			description: 'This is a very light-weight list-maker application. It lets you create lists of things, and cross them off as you need to. The UI is responsive so you can get the same level of experience on the desktop and on mobile devices. This application is ideal for grocery lists, shopping lists, invitee lists and other scenarios where you need checklists. It is an ASP.NET MVC/Web API SPA web application that uses AngularJS and Bootstrap (with Responsiveness) on the frontend, and uses MongoDB as its database.'
+		}, {
+			title: 'RudyMQ', ghpage: 'http://aashishkoirala.github.io/rudymq', ghrepo: 'http://github.com/aashishkoirala/rudymq/',
+			description: 'RudyMQ is a lightweight message queue for Windows built using .NET and WCF that you may want to consider if you don''t need the enterprise grade features of MSMQ and don''t want to deal with all of its tantrums and oh-so-friendly error messages. It supports persistent messages and also comes with its own WCF binding.'
 		}];
     };
 
