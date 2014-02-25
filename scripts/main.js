@@ -54,6 +54,9 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
 		}, {
 			title: 'RudyMQ - A rudimentary message queue', ghpage: 'http://aashishkoirala.github.io/rudymq', ghrepo: 'http://github.com/aashishkoirala/rudymq/',
 			description: 'RudyMQ is a lightweight message queue for Windows built using .NET and WCF that you may want to consider if you do not need the enterprise grade features of MSMQ and do not want to deal with all of its tantrums and oh-so-friendly error messages. It supports persistent messages and also comes with its own WCF binding.'
+		}, {
+			title: 'Aspects for .NET', ghpage: 'http://aashishkoirala.github.io/aspects', ghrepo: 'http://github.com/aashishkoirala/aspects/', nuget: 'https://nuget.org/packages/aspects',
+			description: 'Aspects for .NET is a library that you can use to add aspect orientation to your .NET application. It provides interfaces that you can implement to build your own aspects which you can then apply to your implementation classes. It also then provides a mechanism to wrap, at runtime, your implementation with aspects (and no, it does not mess with the MSIL post-compilation). There is also integrated support for MEF, albeit with some limitations.'
 		}];
     };
 
