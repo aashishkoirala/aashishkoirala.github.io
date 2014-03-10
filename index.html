@@ -87,7 +87,9 @@
 					        <br/>
 					        <div class="well well-small" ng-repeat="project in projects">
 					            <h5>{{project.title}}</h5>
-					            <a ng-href="{{project.ghpage}}">GitHub Page</a>&nbsp;|
+					            <span ng-show="project.ghpage != null">
+									<a ng-href="{{project.ghpage}}">GitHub Page</a>&nbsp;|
+					            </span>								
 					            <a ng-href="{{project.ghrepo}}">GitHub Repo</a>
 					            <span ng-show="project.application != null">
 					                |&nbsp;<a ng-href="{{project.application}}">Application</a>

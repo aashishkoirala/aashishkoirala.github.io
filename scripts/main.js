@@ -57,6 +57,9 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
 		}, {
 			title: 'Aspects for .NET', ghpage: 'http://aashishkoirala.github.io/aspects', ghrepo: 'http://github.com/aashishkoirala/aspects/', nuget: 'https://nuget.org/packages/aspects',
 			description: 'Aspects for .NET is a library that you can use to add aspect orientation to your .NET application. It provides interfaces that you can implement to build your own aspects which you can then apply to your implementation classes. It also then provides a mechanism to wrap, at runtime, your implementation with aspects (and no, it does not mess with the MSIL post-compilation). There is also integrated support for MEF, albeit with some limitations.'
+		}, {
+			title: 'Snippets Collection', ghrepo: 'http://github.com/aashishkoirala/snippets/',
+			description: 'This repository is a collection of fully compilable code snippets and solutions that I have put together for one purpose or another (mostly to try stuff out or to support ideas for my blog).'
 		}];
     };
 
