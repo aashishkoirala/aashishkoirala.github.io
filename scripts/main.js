@@ -40,9 +40,6 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
             title: 'Commons Library: Provider Set', ghpage: 'http://aashishkoirala.github.io/commons-providers/', ghrepo: 'http://github.com/aashishkoirala/commons-providers/', 
             description: 'This provider set compliments my commons library and includes certain implementations of interfaces in the commons library. These "providers" can be included and consumed by any application that uses the commons library via MEF and the commons library configuration mechanism. You can get each individual provider as a NuGet package.'
         }, {
-            title: 'Modeling Kit: Text Templating Library', ghpage: 'http://aashishkoirala.github.io/modeling/', ghrepo: 'http://github.com/aashishkoirala/modeling/', nuget: 'https://www.nuget.org/packages/ak.modeling.texttemplating',
-            description: 'This is the future home of my full-blown modeling kit. I envision a DSL based tool that lets you model a domain and generates a whole bunch of code for you. For the moment though, this is limited to a text-templating library that includes helper methods that you can use in your T4 templates. The scope is limited to generation of entities and repositories following the data access interface in my commons library - the entities being modeled as JSON files.'
-		}, {
 			title: 'Finance Manager', ghpage: 'http://aashishkoirala.github.io/financemanager/', ghrepo: 'http://github.com/aashishkoirala/financemanager/',
 			description: '(Now obsolete- this was my first attempt at Angular). This is a tool I built to keep track of my personal finances. It lets you create a period budget, and lets you record your transactions so that you can track it against the budget. It is an ASP.NET MVC/Web API SPA web application that uses AngularJS and Bootstrap on the frontend.'
 		}, {
