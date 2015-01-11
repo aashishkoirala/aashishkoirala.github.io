@@ -64,6 +64,9 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
 			title: 'Scribe', ghpage: 'http://aashishkoirala.github.io/scribe', ghrepo: 'http://github.com/aashishkoirala/scribe/',
 			description: 'This is a very simple and very focused application that lets you write plain text. That is it! I built it to be as simple as a typewriter so I could get my writing done in a manner similar to that. It is a .NET desktop application written using WPF.'
 		}, {
+			title: 'Vault', ghpage: 'http://aashishkoirala.github.io/vault', ghrepo: 'http://github.com/aashishkoirala/vault/',
+			description: 'This is a command-line tool that lets you encrypt and decrypt your sensitive files. I built it for my use as I wanted to put my files up in the cloud but did not trust any cloud provider with my data in the open. With this, I feel confident putting all my stuff up on the cloud.'
+		}, {
 			title: 'Snippets Collection', ghrepo: 'http://github.com/aashishkoirala/snippets/',
 			description: 'This repository is a collection of fully compilable code snippets and solutions that I have put together for one purpose or another (mostly to try stuff out or to support ideas for my blog).'
 		}];
