@@ -64,6 +64,9 @@ angular.module('akApp', []).controller('akCtrl', function ($scope) {
 			title: 'Vault', ghpage: 'http://aashishkoirala.github.io/vault', ghrepo: 'http://github.com/aashishkoirala/vault/',
 			description: 'This is a command-line tool that lets you encrypt and decrypt your sensitive files. I built it for my use as I wanted to put my files up in the cloud but did not trust any cloud provider with my data in the open. With this, I feel confident putting all my stuff up on the cloud.'
 		}, {
+			title: 'RockCon', ghpage: 'http://aashishkoirala.github.io/rockcon', ghrepo: 'http://github.com/aashishkoirala/rockcon/',
+			description: 'I built this because I got sick of Windows Media Player modifying my music files without my consent, and also because I wanted to organize and get at my music just the way I like it - and through a clean console interface that is fast and easy to "keyboard around".'
+		}, {
 			title: 'Snippets Collection', ghrepo: 'http://github.com/aashishkoirala/snippets/',
 			description: 'This repository is a collection of fully compilable code snippets and solutions that I have put together for one purpose or another (mostly to try stuff out or to support ideas for my blog).'
 		}];
