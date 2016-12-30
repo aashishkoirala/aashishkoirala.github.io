@@ -1,127 +1,28 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="chrome=1">
-        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="description" content="Aashish Koirala Software Architect and Developer Homepage">
-		<title>Aashish Koirala</title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen" />
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>		
-		<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-		<script type="text/javascript" src="scripts/angular.min.js"></script>
-		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-		<script type="text/javascript">
-		   google.load("feeds", "1")
-		</script>		
-		<script type="text/javascript" src="scripts/main.js"></script>
-		<!--[if lt IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-	</head>
-
-	<body>
-		<div class="container" ng-app="akApp">
-			<header>
-			    <div class="row">
-			        <div class="span4">
-			            <a href="#" style="text-decoration: none">
-			                <h2 class="muted" style="font-weight: normal" title="Aashish Koirala">aashish<b>koirala</b></h2>
-			            </a>
-			        </div>
-			    </div>
-			</header>
-
-			<section id="main-content">
-				<div class="navbar">
-					<div class="navbar-inner tabbable">
-						<ul class="nav nav-stacked">
-							<li class="divider-vertical"></li>
-							<li class="active"><a data-toggle="tab" href="#home_tab">Home</a></li>
-							<li class="divider-vertical"></li>
-							<li><a data-toggle="tab" href="#projects_tab">Projects</a></li>
-							<li class="divider-vertical"></li>
-							<li><a href="http://aashishkoirala.wordpress.com">Blog</a></li>
-							<li class="divider-vertical"></li>
-							<li><a href="https://www.nuget.org/profiles/aashishkoirala/">Nuget Gallery</a></li>
-							<li class="divider-vertical"></li>
-						</ul>
-					</div>
-					<div class="tab-content" ng-controller="akCtrl">
-						<div class="tab-pane active" id="home_tab">
-						    <div class="row-fluid" style="padding-top: 20px">
-						        <div class="span3 well" style="text-align: center">
-						            <img alt="That's me!" width="100" height="100" src="https://secure.gravatar.com/avatar/100f2280ecbf23438d15db61ad1e3ba0" style="width: 100px; height: 100px"/>
-                                    <br/><br/>
-						            <table class="row-fluid" style="vertical-align: middle">
-						                <tr ng-repeat="social in socials">
-						                    <td class="pull-right"><a ng-href="{{social.link}}"><img style="width: 32px; height: 32px" width="32" height="32" ng-src="{{social.icon}}"/></a></td>
-                                            <td style="width: 5px"></td>
-						                    <td class="pull-left"><a ng-href="{{social.link}}">{{social.text}}</a></td>
-						                </tr>
-						            </table>
-						        </div>
-						        <div class="span9">
-						            My name is Aashish Koirala.
-						            I build software for a living. <i>.NET</i> happens to be my primary platform of choice.
-						            I also like to do it just for fun and to put stuff out there.
-						            I like to think about architecture, building better software and making the process of building software better.
-						            And I also like to write about all of this.<br/><br/>
-                                    
-						            Here, you can peruse through open source stuff I've done (the <b>Projects</b> tab) or
-						            stuff I've written (<a href="http://aashishkoirala.wordpress.com">Blog</a>); or go to my <a href="https://www.nuget.org/profiles/aashishkoirala/">Nuget Gallery</a>
-						            to figure out if there's anything I've put out that you can use for your own development.
-						            And - as soon as I get around to getting my Azure site running, you will even be able to use apps that I put out.
-                                    
-						            <hr class="container-fluid"/>
-						            <h6>LATEST FROM MY BLOG</h6>
-						            <div><ul><li ng-repeat="blog in blogs"><a ng-href="{{blog.link}}">{{blog.title}}</a></li></ul></div>
-						            <hr class="container-fluid"/>
-						            <h6>LATEST GITHUB ACTIVITY</h6>
-						            <div><ul><li ng-repeat="commit in commits"><a ng-href="{{commit.link}}">{{commit.title}}</a></li></ul></div>
-						        </div>
-						    </div>
-						</div>
-					    <div class="tab-pane" id="projects_tab">
-					        <br/>
-					        <div class="well well-small" ng-repeat="project in projects">
-					            <h5>{{project.title}}</h5>
-					            <span ng-show="project.ghpage != null">
-									<a ng-href="{{project.ghpage}}">GitHub Page</a>&nbsp;|
-					            </span>								
-					            <a ng-href="{{project.ghrepo}}">GitHub Repo</a>
-					            <span ng-show="project.application != null">
-					                |&nbsp;<a ng-href="{{project.application}}">Application</a>
-					            </span>								
-					            <span ng-show="project.nuget != null">
-					                |&nbsp;<a ng-href="{{project.nuget}}">Nuget</a>
-					            </span><br/><br/>
-					            <span>
-					                {{project.description}}
-					            </span>
-					        </div>
-					    </div>
-						<div class="tab-pane" id="blog_tab">
-							Blog
-						</div>
-						<div class="tab-pane" id="nuget_tab">
-							Nuget Gallery
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-
-		<script type="text/javascript">
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-42900227-1', 'aashishkoirala.github.io');
-		  ga('send', 'pageview');
-		</script>
-
-	</body>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="robots" content="index,follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Aashish Koirala: Software Architect and Developer GitHub Page" />
+    <meta name="apple-mobile-web-app-title" content="Aashish Koirala's GitHub Page">
+    <meta name="application-name" content="Aashish Koirala's GitHub Page">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.aashishkoirala.com/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.aashishkoirala.com/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.aashishkoirala.com/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="https://www.aashishkoirala.com/site.webmanifest" />
+    <link rel="mask-icon" href="https://www.aashishkoirala.com/images/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <title>Aashish Koirala's GitHub Page</title>
+</head>
+<body style="margin: 10px; padding: 10px; font-family: arial; font-size: 16pt">
+	I now have a website at <a href="https://www.aashishkoirala.com">aashishkoirala.com.</a><br/>
+	You are being redirected there. If the redirection doesn't work, please click the above link to visit.
+	<script type="text/javascript">
+		location = "https://www.aashishkoirala.com";
+	</script>
+</body>
 </html>
