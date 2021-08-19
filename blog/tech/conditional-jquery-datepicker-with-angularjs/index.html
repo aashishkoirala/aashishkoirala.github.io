@@ -1,0 +1,120 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Conditional JQuery Datepicker With AngularJS &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Conditional JQuery Datepicker With AngularJS</h1>
+<time datetime=2014-03-07T00:00:00Z class=post-date>Fri, Mar 7, 2014</time>
+<p>I just find AngularJS directives so much fun. It is so satisfying to see them work. Recently, I came across a requirement where I had a text field bound to a property that could either be a date or text. I had a way of knowing which one it was, but if the property was a date, the text field would need to become a datepicker, and turn back into a normal text field if not. And no, not an HTML5 date control - an old-timy jQuery datepicker.</p>
+<p>So, a simplified version of what the controller looked like:</p>
+<pre><code>var app = angular.module('app', ...);
+...
+
+app.controller('ctrl', function ($scope, ...) {
+	...
+	$scope.isDate = false;
+	$scope.dateOrText = '';
+	...
+});
+</code></pre>
+<p>Here, <code>dateOrText</code> was bound to the text field and we had a way of knowing whether it was a date or not, represented in a simplified manner here by the boolean <code>isDate</code>. Given the HTML as follows:</p>
+<pre><code>&lt;input type=&quot;text&quot; ng-model=&quot;dateOrText&quot;/&gt;
+</code></pre>
+<p>The need was for this text field to become a jQuery datepicker whenever <code>isDate</code> becomes <code>true</code> and turn back to a normal text field when it becomes <code>false</code>.</p>
+<p>An obvious application of directives, right? Here&rsquo;s the naive solution:</p>
+<pre><code>app.directive('akDate', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            scope.$watch(attrs.akDate, function(value) {
+                if (value) $(element).datepicker();
+                else $(element).datepicker(&quot;destroy&quot;);
+            });
+        }
+    };
+});
+</code></pre>
+<p>The HTML would then look like:</p>
+<pre><code>&lt;input type=&quot;text&quot; ak-date=&quot;isDate&quot; ng-model=&quot;dateOrText&quot;/&gt;
+</code></pre>
+<p>In plain English, the directive watches for the value of the <code>ak-date</code> attribute to change, and when it does - it uses the jQuery <code>datepicker</code> call to apply or remove &ldquo;datepickerness&rdquo; to the element.</p>
+<p>One thing I did not catch though was the fact that just applying the datepicker is not enough. If you leave it like this, the rendering will work fine - however, the binding with the model will not work, i.e. picking a date will not update the value of <code>dateOrText</code>. The way that jQuery datepicker applies the selected text to the control is not picked up by Angular.</p>
+<p>Fortunately, jQuery datepicker has an <code>onSelect</code> event that you can handle to put your own logic in that happens whenever a date is selected. We just need to use that to create an expression that assigns the value to the model, and then run it within Angular.</p>
+<p>The complete solution then becomes:</p>
+<pre><code>app.directive('akDate', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs) {
+            scope.$watch(attrs.akDate, function(value) {
+                if (value) {
+                    $(element).datepicker({
+                        onSelect: function(dateText) {
+                            var expression = attrs.ngModel + &quot; = &quot; + &quot;'&quot; + dateText + &quot;'&quot;;
+                            scope.$apply(expression);
+                        }
+                    });
+                } else $(element).datepicker(&quot;destroy&quot;);
+            });
+        }
+    };
+});
+</code></pre>
+<p>Works like a charm!</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/javascript/>javascript</a> <a href=https://aashishkoirala.github.io/tags/js/>js</a> <a href=https://aashishkoirala.github.io/tags/jquery/>jquery</a> <a href=https://aashishkoirala.github.io/tags/angular/>angular</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/getting-functional-with-perhaps/>Getting Functional With Perhaps</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-1/>Writing Your Own LINQ Provider- Part 1</a>
+</div>
+</div>
+</main>
+</body>
+</html>

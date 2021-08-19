@@ -1,0 +1,97 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Handling Duplicate Libraries with MEF &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Handling Duplicate Libraries with MEF</h1>
+<time datetime=2013-08-09T00:00:00Z class=post-date>Fri, Aug 9, 2013</time>
+<p>While building the composition/DI piece for the <a href=http://aashishkoirala.github.io/commons/>Commons Library</a>, one problem I ran into was the fact that if you told MEF to load assemblies from a number of different places - and they all had copies of the same library (which is possible especially with common dependencies), MEF would load the exports in each assembly as many times as it finds it. What you end up with then is a whole bunch of matching exports for a contract that you expect only one of.</p>
+<p>One easy way to handle this is to assume that <code>FullName</code> for an assembly truly uniquely identifies it (i.e. the code within two instances of an assembly with the same <code>FullName</code> should not be different). We can then do something like the following (assume here that <code>modulesDirectories</code> is an <code>IEnumerable&lt;string></code> that consists of the list of directories we want to load our assemblies from).</p>
+<pre><code>var assemblyFiles = new List&lt;string&gt;();
+foreach (var modulesDirectory in modulesDirectories)
+{
+  using (var directoryCatalog = new DirectoryCatalog(modulesDirectory))
+  assemblyFiles.AddRange(directoryCatalog.LoadedFiles);
+}
+ 
+var assemblyCatalogs = assemblyFiles
+  .Distinct()
+  .Select(Assembly.LoadFrom)
+  .Distinct(new AssemblyEqualityComparer())
+  .Select(x =&gt; new AssemblyCatalog(x))
+  .ToList();
+ 
+var container = new CompositionContainer(new AggregateCatalog(assemblyCatalogs));
+</code></pre>
+<p>In the above snippet, we use a class <code>AssemblyEqualityComparer</code>, which can be defined as follows:</p>
+<pre><code>private class AssemblyEqualityComparer : IEqualityComparer&lt;Assembly&gt;
+{
+  public bool Equals(Assembly x, Assembly y)
+  {
+    return x.FullName == y.FullName;
+  }
+  
+  public int GetHashCode(Assembly obj)
+  {
+    return obj.GetHashCode();
+  }
+}
+</code></pre>
+<p>You can find the full Commons Library code implementation for this <a href=https://github.com/aashishkoirala/commons/blob/master/src/AK.Commons/Providers/Composition/Composer.cs>here</a>.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/mef/>mef</a> <a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/mef-for-everything/>MEF for everything!</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/configuration-in-the-commons-library/>Configuration in the Commons Library</a>
+</div>
+</div>
+</main>
+</body>
+</html>

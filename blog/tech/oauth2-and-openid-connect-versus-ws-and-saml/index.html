@@ -1,0 +1,74 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>OAuth2 and OpenID Connect versus WS and SAML &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>OAuth2 and OpenID Connect versus WS and SAML</h1>
+<time datetime=2017-02-20T00:00:00Z class=post-date>Mon, Feb 20, 2017</time>
+<p>I have mentioned how part of <a href=moving-to-azure-paas-and-service-fabric-part-1>our replatforming project</a> that saw us move to Azure was moving the security protocol from <a href=https://en.wikipedia.org/wiki/WS-Federation>WS-Federation</a>/<a href=https://en.wikipedia.org/wiki/WS-Trust>WS-Trust</a> to <a href=https://oauth.net/2/>OAuth2</a> and <a href=https://openid.net/connect/>OpenID Connect</a>. I kept running into rumblings on the internet about how even though it was widely adopted, OAuth2/OpenID Connect were somehow less secure. Comparing a secure implementation of both side by side, I did not really see how this could be. Since our industry is not short on oversimplification and grand proclamations, I decided to pose this question to experts in the field.</p>
+<p>I posted <a href=https://security.stackexchange.com/questions/148292/why-is-oauth2-openid-connect-considered-less-secure-than-saml-ws>this question</a> on the <a href=https://security.stackexchange.com>Information Security Stack Exchange</a> site. The quality of the responses I got blew me away- carefully thought through and well articulated, to say the least.</p>
+<p>I liked <a href=https://security.stackexchange.com/a/148550/136270>this answer</a> by <a href=https://security.stackexchange.com/users/136522/karl-mcguinness>Karl McGuinness</a> the best and thought it worthwhile to socialize it further through this blog post.</p>
+<p>The key takeaway, though, is:</p>
+<ul>
+<li>All these protocols are secure, but an implementation may be insecure if not properly done. In this spirit, the simpler the protocol, the better.</li>
+<li>All these protocols use cryptographically signed tokens that support optional encryption.</li>
+<li>There are some problems with OAuth2 by itself which are addressed by OpenID Connect.</li>
+</ul>
+<p>I hope this can serve as a good resource to refute any other oversimplified statement to the contrary.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/wsfed/>wsfed</a> <a href=https://aashishkoirala.github.io/tags/wstrust/>wstrust</a> <a href=https://aashishkoirala.github.io/tags/saml/>saml</a> <a href=https://aashishkoirala.github.io/tags/oauth2/>oauth2</a> <a href=https://aashishkoirala.github.io/tags/openidconnect/>openidconnect</a> <a href=https://aashishkoirala.github.io/tags/security/>security</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/moving-to-azure-paas-and-service-fabric-part-2/>Moving to Azure PaaS and Service Fabric- Part 2</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/an-azure-service-fabric-restarter-in-fsharp/>An Azure Service Fabric Restarter in F#</a>
+</div>
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Bootstrap Modal With AngularJS &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Bootstrap Modal With AngularJS</h1>
+<time datetime=2014-03-17T00:00:00Z class=post-date>Mon, Mar 17, 2014</time>
+<p>We&rsquo;ll look at a relatively low hanging fruit in case you&rsquo;re working with vanilla AngularJS and Twitter Bootstrap and are not relying on other add-ons such as AngularUI&rsquo;s Bootstrap extension. One common need I have is to be able to show or hide Bootstrap modals based on a property on my view-model. Here&rsquo;s a simplified view of the controller:</p>
+<pre><code>var app = angular.module('app', ...);
+...
+
+app.controller('ctrl', function ($scope, ...) {
+	...
+	$scope.showModal = false;
+	...
+});
+</code></pre>
+<p>And here is the HTML:</p>
+<pre><code>&lt;a href=&quot;#myModal&quot; data-toggle=&quot;modal&quot;&gt;Show Modal&lt;/a&gt;
+...
+...
+&lt;div id=&quot;myModal&quot; class=&quot;modal hide&quot; data-backdrop=&quot;static&quot;&gt;
+    &lt;div class=&quot;modal-body&quot;&gt;
+        Modal text goes here.
+        &lt;br/&gt;
+        &lt;button class=&quot;btn pull-right&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>In order to maintain separation of concerns, I want to be able to show or hide the modal as the value of <code>showModal</code> changes. This is another good use for directives in AngularJS. As with the <a href=conditional-jquery-datepicker-with-angularjs>datepicker example</a>, we need a directive that will add a <code>watch</code> on <code>link</code> and use the JavaScript methods available with Bootstrap to control the modal, rather than the <code>data-toggle</code> or <code>data-dismiss</code> attributes.</p>
+<p>The directive would then look like:</p>
+<pre><code>app.directive('akModal', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            scope.$watch(attrs.akModal, function(value) {
+                if (value) element.modal('show');
+                else element.modal('hide');
+            });
+        }
+    };
+});
+</code></pre>
+<p>Here, we are calling the Boostrap method <code>modal</code> on the element to which the directive is applied, i.e. the <code>div</code> that is the modal container. The HTML modified to work with this directive then looks like:</p>
+<pre><code>&lt;a href=&quot;#&quot; ng-click=&quot;showModal = true&quot;&gt;Show Modal&lt;/a&gt;
+...
+...
+&lt;div class=&quot;modal hide&quot; ak-modal=&quot;showModal&quot; data-backdrop=&quot;static&quot;&gt;
+    &lt;div class=&quot;modal-body&quot;&gt;
+        Modal text goes here.
+        &lt;br/&gt;
+        &lt;button class=&quot;btn pull-right&quot; ng-click=&quot;showModal = false&quot;&gt;Close&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>The modal display is now bound to <code>showModal</code>. Note how we got rid of <code>data-toggle</code> (along with the <code>id</code> on the <code>div</code>) and <code>data-dismiss</code>. Now, if some property on the view-model needs to control whether the modal is displayed, then it would not make sense to have a link hardwired to trigger the specific modal anyway. The case for <code>data-dismiss</code> is different though.</p>
+<p>Another thing to consider is - if you have a lot of modals and a lot of different view-model properties controlling them, you are going to have a lot of watches, which you probably don&rsquo;t want. If we make the assumption that mostly you&rsquo;re going to have one modal visible at a time (unless you have multiple levels of modals going on - in which case personally I think you would need to rethink the UX you are providing), you can make something more generic such as a <code>modalService</code> that will work with a single modal <code>div</code> and have a <code>showModal</code> operation that takes the content to display in the modal. There would need to be a corresponding <code>hideModal</code> operation as well, of course. I plan to explore this further.</p>
+<p>Now, back to the <code>data-dismiss</code> thing. What we have at the moment is somewhat of a one-way binding. It would be ideal if this could be made two-way so that closing the modal using <code>data-dismiss</code> automatically set <code>showModal</code> to false. At the moment, I have not given this enough effort to be able to do it in an acceptably performant way. If someone has, I would love to hear about it.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/javascript/>javascript</a> <a href=https://aashishkoirala.github.io/tags/js/>js</a> <a href=https://aashishkoirala.github.io/tags/angular/>angular</a> <a href=https://aashishkoirala.github.io/tags/bootstrap/>bootstrap</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-4/>Writing Your Own LINQ Provider- Part 4</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/bye-bye-typescript-for-now/>Bye, Bye, TypeScript, for now</a>
+</div>
+</div>
+</main>
+</body>
+</html>

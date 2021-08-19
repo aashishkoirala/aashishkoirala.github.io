@@ -1,0 +1,68 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>RudyMQ- A Rudimentary Message Queue for Windows &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>RudyMQ- A Rudimentary Message Queue for Windows</h1>
+<time datetime=2014-02-11T00:00:00Z class=post-date>Tue, Feb 11, 2014</time>
+<p>For some odd reason out of the blue, I got this hankering to build a message queue (albeit rudimentary - hence the name) from scratch. I&rsquo;ve been working with MSMQ for a while now, mostly as a transport for WCF. As cool as it is, it can really get on your nerves at times. It is an enterprise grade product, after all, which means there are a lot of dials you can turn. If something is not right, you&rsquo;ll get an error. If your experience has been the same as mine, you will recognize the dreaded <em>insufficient resources</em> error that MSMQ gives you for almost any of a thousand things that can go wrong.</p>
+<p>That got me thinking that if in most cases, I don&rsquo;t really need all the enterprise grade features of MSMQ, a simpler managed-code version may suffice. .NET gives you many varieties of queue or queue-type data structures that one could leverage and combine with something like WCF to build a message queue. The only serious issues you would have to deal with, I guess, would be concurrence and performance. The use of read-write locks greatly helped with both, and as foolish as it was of me to not keep a record of the performance test results around, I remember thinking to myself at the time - &ldquo;hey, this thing is handling a reasonable amount of concurrent load pretty nicely.&rdquo; That&rsquo;s good enough for me, is it not good enough for you (smirk)?</p>
+<p>Anyway, you can find more details <a href=http://aashishkoirala.github.io/rudymq/>over here</a>. Feedback appreciated as always.</p>
+<p>As I think back, I think it took me longer to get the WCF binding working than the actual message queue itself. If you think just using WCF is a chore, try building your own channels. The lack of available documentation online and how to get something like this working end-to-end was shocking. So, that - I believe - is another blog post in the works.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.github.io/tags/wcf/>wcf</a> <a href=https://aashishkoirala.github.io/tags/messagequeue/>messagequeue</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/dancing-with-responsive-design/>Dancing with Responsive Design</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/reader-writer-locking-in-dotnet/>Reader Writer Locking In .NET</a>
+</div>
+</div>
+</main>
+</body>
+</html>

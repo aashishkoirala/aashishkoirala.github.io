@@ -1,0 +1,125 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Git- Rewriter of History &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Git- Rewriter of History</h1>
+<time datetime=2015-01-07T00:00:00Z class=post-date>Wed, Jan 7, 2015</time>
+<p>Undoubtedly one of the biggest advantages that <a href=https://git-scm.com/>Git</a> provides is using <a href=https://git-scm.com/docs/git-rebase>rebasing</a> to maintain a clean commit history. I find that I am using it a lot these days- primarily in three modes:</p>
+<ul>
+<li>As part of <em>pull</em> (i.e. <strong>git pull -rebase</strong>)</li>
+<li>Interactive rebase to: 1) keep my own history clean when I am off working on a branch by myself, and 2) clean up a feature branch&rsquo;s commit history before merging it into the mainstream</li>
+<li>Rebase my branch against a more mainstream branch before I merge onto it (i.e. <strong>git rebase</strong> <em>mainstream-branch</em>)</li>
+</ul>
+<p>With interactive rebase, usually what I do is- I will have one initial commit that describes in general the feature I am working on. It will then be followed by a whole bunch of commits that are advancements of or adjustments to that - quick and dirty ones with &ldquo;WIP (i.e. work in progress) as the message. If, in the middle of this, I switch to some other significant area, then I will add another commit with a more verbose message, and then again it&rsquo;s &ldquo;WIP, &ldquo;WIP, and so on. I will add any thing I need to qualify the &ldquo;WIP with if necessary (e.g. if the &ldquo;WIP is for a different context than the last few WIPs, or if the WIP does indeed add some more information to the initial commit). In any case, after some time, I will end up with a history that looks a bit like this (in chronological order):</p>
+<pre><code>hash0 Last &quot;proper&quot; commit.
+hash1 Started implementing feature 1. Blaah blaah.
+hash2 WIP
+hash3 WIP
+hash4 WIP
+hash5 Started implementing feature 2. Blaah blaah.
+hash6 WIP
+hash7 WIP
+hash8 WIP (feature 1)
+hash9 WIP (feature 1)
+hash10 WIP (feature 2)
+</code></pre>
+<p>At this point, I will realize that things are getting a bit unwieldy. So I do an interactive rebase, i.e. <strong>git rebase -i</strong> <em>hash0</em>, which gives me this:</p>
+<pre><code>p hash1 Started implementing feature 1. Blaah blaah.
+p hash2 WIP
+p hash3 WIP
+p hash4 WIP
+p hash5 Started implementing feature 2. Blaah blaah.
+p hash6 WIP
+p hash7 WIP
+p hash8 WIP (feature 1)
+p hash9 WIP (feature 1)
+p hash10 WIP (feature 2)
+</code></pre>
+<p>The first thing I will do is reorder the commits so that they are not interleaving back and forth between what they logically represent (i.e. features 1 and 2 in this case). This, of course, assumes, that there is no overlap in terms of code units touched by features 1 and 2.</p>
+<pre><code>p hash1 Started implementing feature 1. Blaah blaah.
+p hash2 WIP
+p hash3 WIP
+p hash4 WIP
+p hash8 WIP (feature 1)
+p hash9 WIP (feature 1)
+p hash5 Started implementing feature 2. Blaah blaah.
+p hash6 WIP
+p hash7 WIP
+p hash10 WIP (feature 2)
+</code></pre>
+<p>Next, I mark the main commits as &ldquo;r for <em>reword</em> if I need to improve the commit message, or as &ldquo;e for <em>edit</em> if I also need to, for some reason, change the commit date (I will usually do this using <strong>git commit &ndash;amend &ndash;date=now</strong> so that the history looks nice and chronological). The &ldquo;WIP commits- I mark as &ldquo;f for <em>fixup</em>- which is a version of <em>squash</em> that skips the step that lets you combine the commit messages, since &ldquo;WIP does not have anything worth combining in terms of the commit message.</p>
+<pre><code>e hash1 Started implementing feature 1. Blaah blaah.
+f hash2 WIP
+f hash3 WIP
+f hash4 WIP
+f hash8 WIP (feature 1)
+f hash9 WIP (feature 1)
+e hash5 Started implementing feature 2. Blaah blaah.
+f hash6 WIP
+f hash7 WIP
+f hash10 WIP (feature 2)
+</code></pre>
+<p>When all is said and done and the rebase is complete, I have a nice clean history:</p>
+<pre><code>hash0 Last &quot;proper&quot; commit.
+hash11 Implemented feature 1.
+hash12 Implemented feature 2.
+</code></pre>
+<p>I love Git.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/git/>git</a> <a href=https://aashishkoirala.github.io/tags/rebase/>rebase</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/beware-of-this-wcf-serialization-pitfall/>Beware of this WCF Serialization Pitfall</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/writing-a-ws-federation-based-sts-using-wif/>Writing a WS-Federation Based STS using WIF</a>
+</div>
+</div>
+</main>
+</body>
+</html>

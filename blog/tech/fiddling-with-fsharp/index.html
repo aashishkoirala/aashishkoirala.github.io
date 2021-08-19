@@ -1,0 +1,220 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Fiddling with F# &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Fiddling with F#</h1>
+<time datetime=2016-06-05T00:00:00Z class=post-date>Sun, Jun 5, 2016</time>
+<p>I have always had a keen interest in functional programming. While I still shy away from going completely functional for full-blown applications, I try to use the tenets of functional programming as much as I can even when writing C#. This is made much easier by the fact that C# has borrowed a lot of functional programming features as it has evolved. With each new version of the language, I find my code getting more concise and more expressive mostly owing to these features. That said, if you are looking for a functional-first experience, nothing beats a functional language. I like <strong>F#</strong> as it belongs to the .NET ecosystem but is derived from <strong>OCaml</strong> which itself is quite elegant.</p>
+<p>There is somewhat of a barrier to entry with functional programming in terms of the learning curve. Sites like <a href=https://fsharpforfunandprofit.com/>this amazing one by Scott Wlaschin</a> make it much more appealing. Having said all that, since I am not quite at the point where I will build a full blown application with F# (plus I can&rsquo;t at my day job anyway), but I have that itch to use it that needs to be scratched, I found a good use case for it, at my day job nonetheless.</p>
+<p>Any time I need to write a quick script that does something, I default to F# these days. A good example of this is a bunch of project file cleanup scripts I needed to write that cleaned up CSPROJ files (references, Nuget packages and what not). I keep an F# program around (not even an actual compiled program - it&rsquo;s a LINQPad script) that I run and add to as needed, and it works beautifully. Here are a few snippets from it that are generic enough that I can share here. Everything is in a <code>module ProjectCleanup</code>.</p>
+<p>Some basic utility functions first:</p>
+<pre><code>let getFiles sourcePath pattern = 
+    Directory.GetFiles(sourcePath, pattern, SearchOption.AllDirectories)
+
+let excludeNones (xs: seq&lt;'a option&gt;) =
+    xs
+    |&gt; Seq.filter (fun x -&gt; match x with Some _ -&gt; true | _ -&gt; false)
+    |&gt; Seq.map (fun x -&gt; match x with Some x' -&gt; x' | _ -&gt; failwith &quot;Invalid&quot;)
+
+let toElements (nodes:XmlNodeList) = seq {
+    for node in nodes do
+        yield node :?&gt; XmlElement
+}
+
+let toMatches (ms:MatchCollection) = seq {
+    for m in ms do
+        yield m
+}
+
+let toMany (a:seq&lt;seq&lt;'a&gt;&gt;) = seq {
+    for x in a do
+        for y in x do
+            yield y
+}
+</code></pre>
+<p>A few helper functions to work with a bunch of files or a bunch of XML files (which CSPROJ files are).</p>
+<pre><code>let processFilesXml processor (files: seq&lt;string&gt;) =
+    files
+    |&gt; Seq.iter (fun f -&gt;
+        let d = XmlDocument()
+        d.Load f
+        match processor d |&gt; Seq.exists id with
+        | true -&gt; d.Save f
+        | false -&gt; () 
+    )
+
+let processFilesLines processor files =
+    files
+    |&gt; Seq.iter (fun f -&gt;
+        let ls = File.ReadAllLines f
+        let lcs = processor ls
+        let changed = lcs |&gt; Seq.exists (fun (c, _) -&gt; c)
+        let ls' = lcs |&gt; Seq.map (fun (_, l) -&gt; l) |&gt; Seq.toArray
+        match changed with true -&gt; File.WriteAllLines(f, ls') | _ -&gt; ()
+    )
+</code></pre>
+<p>The following removes specific targets and imports that intrude into the CSPROJ when you install certain packages. They serve a purpose, but not in my case - so they have to go.</p>
+<pre><code>let removeBadTargetsAndImports sourcePath =
+    printfn &quot;Removing bad targets and imports from %s...&quot; sourcePath
+    getFiles sourcePath &quot;*.csproj&quot;
+    |&gt; processFilesXml (fun d -&gt;        
+        let importElementsToRemove =
+            d.GetElementsByTagName &quot;Import&quot;
+            |&gt; toElements
+            |&gt; Seq.map (fun e -&gt;
+               match e.GetAttribute(&quot;Project&quot;).ToLower() with
+               | p when p.Contains &quot;nuget.targets&quot; -&gt; Some e
+               | p when p.Contains &quot;microsoft.bcl.build.targets&quot; -&gt; Some e
+               | _ -&gt; None 
+            )
+            |&gt; Seq.toArray
+        let targetElementsToRemove =
+            d.GetElementsByTagName &quot;Target&quot;
+            |&gt; toElements
+            |&gt; Seq.map (fun e -&gt;
+                match e.GetAttribute(&quot;Name&quot;).ToLower() with
+                | n when n.Contains &quot;ensurebclbuildimported&quot; -&gt; Some e
+                | n when n.Contains &quot;ensurenugetpackagebuildimports&quot; -&gt; Some e
+                | _ -&gt; None
+            )
+            |&gt; Seq.toArray
+        Seq.concat ([|importElementsToRemove; targetElementsToRemove|])
+        |&gt; excludeNones
+        |&gt; Seq.map (fun x -&gt; 
+            x.ParentNode.RemoveChild x |&gt; ignore
+            true 
+        )
+    )
+</code></pre>
+<p>This one removes duplicate entries from <code>packages.config</code> files:</p>
+<pre><code>let dedupePackages sourcePath =
+    printfn &quot;De-duping packages in %s...&quot; sourcePath
+    getFiles sourcePath &quot;packages.config&quot;
+    |&gt; processFilesXml (fun d -&gt;
+        let elementHash = ref Map.empty            
+        d.GetElementsByTagName &quot;package&quot;
+        |&gt; toElements
+        |&gt; Seq.map (fun e -&gt;
+            let id = e.GetAttribute &quot;id&quot;
+            match elementHash.Value.ContainsKey id with
+            | true -&gt; Some e
+            | false -&gt;
+                elementHash.Value &lt;- elementHash.Value.Add(id, true)
+                None
+        )
+        |&gt; Seq.toArray
+        |&gt; excludeNones
+        |&gt; Seq.map (fun x -&gt;
+            x.ParentNode.RemoveChild x |&gt; ignore
+            true 
+        )
+    )
+</code></pre>
+<p>None of my projects want to target specific versions of assemblies. That is just tempting the binding redirects monster. So they have got to go.</p>
+<pre><code>let removeReferenceVersions sourcePath =
+    printfn &quot;Removing reference versions from %s...&quot; sourcePath
+    getFiles sourcePath &quot;*.csproj&quot;
+    |&gt; processFilesLines (fun ls -&gt;
+        ls
+        |&gt; Seq.map (fun l -&gt;
+            match l with
+            | line when (line.Trim().StartsWith &quot;&lt;Reference Include=\&quot;&quot;) &amp;&amp; (line.Contains &quot;,&quot;) &amp;&amp; not (line.Contains &quot;processorArchitecture=AMD64&quot;) -&gt;
+                let xml = line.Trim()
+                let endTag = match xml.EndsWith &quot;&gt;&quot; with true -&gt; &quot;&lt;/Reference&gt;&quot; | _ -&gt; &quot;&quot;
+                let doc = XmlDocument()
+                doc.LoadXml (sprintf &quot;%s%s&quot; xml endTag)
+                doc.DocumentElement.SetAttribute(&quot;Include&quot;, ((doc.DocumentElement.GetAttribute &quot;Include&quot;).Split ',').[0])
+                doc.DocumentElement.InnerXml &lt;- &quot;&quot;
+                let newXml = doc.DocumentElement.OuterXml.Replace(&quot;&lt;/Reference&gt;&quot;, &quot;&quot;)
+                let newXml' = (match xml.EndsWith &quot;/&gt;&quot; with true -&gt; newXml.Replace(&quot;&gt;&quot;, &quot;/&gt;&quot;) | _ -&gt; newXml).Replace(&quot;//&gt;&quot;, &quot;/&gt;&quot;)
+                (true, line.Replace(line.Trim(), newXml'))
+            | line -&gt; (false, line)
+        )
+        |&gt; Seq.toArray            
+    )
+</code></pre>
+<p>Test setting files and test sections in solutions have got to go:</p>
+<pre><code>let deleteTestSettingFiles sourcePath =
+    printfn &quot;Deleting test setting files from %s...&quot; sourcePath
+    Seq.concat [|getFiles sourcePath &quot;*.vsmdi&quot;; getFiles sourcePath &quot;*.testsettings&quot;|]
+    |&gt; Seq.iter (File.Delete)
+
+let removeSolutionTestSections sourcePath =
+    printfn &quot;Removing solution test sections from %s...&quot; sourcePath
+    getFiles sourcePath &quot;*.sln&quot;
+    |&gt; Seq.map (fun file -&gt; (file, File.ReadAllText file))
+    |&gt; Seq.map (fun (file, content) -&gt;
+        (file, content, Regex.Match(content, &quot;Project\\([\&quot;\\w\\-\\{\\}]+\\) = \&quot;Solution Items\&quot;, \&quot;Solution Items\&quot;.+EndProjectSection\r\nEndProject&quot;, RegexOptions.Singleline).Value))
+    |&gt; Seq.filter (fun (_, _, x) -&gt; not (String.IsNullOrWhiteSpace x))
+    |&gt; Seq.map (fun (file, content, solutionItems) -&gt; (file, content.Replace(solutionItems, &quot;&quot;)))
+    |&gt; Seq.iter (fun (file, content) -&gt; File.WriteAllText(file, content))
+</code></pre>
+<p>Finally, I can call what I need to like so:</p>
+<pre><code>let main =
+    let sp = @&quot;C:\My_Source_Directory&quot;
+    removeBadTargetsAndImports sp
+    dedupePackages sp
+    removeReferenceVersions sp
+    deleteTestSettingFiles sp
+    removeSolutionTestSections sp
+    0
+</code></pre>
+<p>For now, anyway, I find this is a nice balance and keeps me actively using both C# and F#, one for major application development, and the other one for these tools.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/fsharp/>fsharp</a> <a href=https://aashishkoirala.github.io/tags/functionalprogramming/>functionalprogramming</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/writing-a-ws-federation-based-sts-using-wif/>Writing a WS-Federation Based STS using WIF</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/the-new-way-forward-for-spas-with-angular-and-react/>The New Way Forward for SPAs with Angular and React</a>
+</div>
+</div>
+</main>
+</body>
+</html>

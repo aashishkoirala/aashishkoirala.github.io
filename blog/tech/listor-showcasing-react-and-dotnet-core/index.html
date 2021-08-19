@@ -1,0 +1,72 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Listor- Showcasing React and .NET Core &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Listor- Showcasing React and .NET Core</h1>
+<time datetime=2017-11-20T00:00:00Z class=post-date>Mon, Nov 20, 2017</time>
+<p>For both <a href=https://reactjs.org/>React</a> and for <a href=https://docs.microsoft.com/en-us/dotnet/core/>.NET Core</a> (specifically <a href=https://www.asp.net/core/overview/aspnet-vnext>ASP.NET Core</a> and <a href=https://docs.microsoft.com/en-us/ef/core/>Entity Framework Core</a>), I got sick of playing around with little prototypes and decided to build an application. <a href=https://github.com/aashishkoirala/listor>Listor</a> is my first proper application I have built using both these technologies. It is a simple list-maker application- nothing fancy. But I have been using it since I put it up and it has come in handy quite a bit.</p>
+<p>I am quite impressed with .NET Core (or I should say &ldquo;the new .NET&rdquo; - to mean not just the .NET Core runtime, but .NET Standard, the new project system, ASP.NET Core, EF Core, and let&rsquo;s say even the latest language improvements to C#). So much so, that it is going to suck a bit going back to writing traditional .NET Framework stuff for my day job.</p>
+<p>My journey with React was much more convoluted. I started with it, took some time getting into the whole idea of JSX, but eventually was quite impressed by it. Then I got into the rabbit hole of setting up the environment, boilerplates, and then <a href=https://facebook.github.io/flux/docs/overview.html>Flux</a> and then <a href=https://redux.js.org/>Redux</a> - and then I got jaded real fast. I had to then reset myself back into vanilla React to see if I could just get stuff done with it. As far as this little application is concerned, it did the job nicely. I used <a href=https://github.com/facebook/create-react-app>create-react-app</a> to set it up.</p>
+<p>EF Core worked out nicely for this application - I am not doing anything crazy anyway, so those basic use cases are already nicely covered. In terms of the build process, rather than treat the build output of the client application as content and simply use something like <code>app.UseFileServer()</code>, I opted to go with compiling them as embedded resources, and built an <a href=https://github.com/aashishkoirala/listor/blob/master/AK.Listor/AssetServer.cs><code>AssetServer</code></a> middleware that would cache it in-memory and serve it out fast. Again, I didn&rsquo;t have to, but it turned out okay.</p>
+<p>I am using <a href=https://letsencrypt.org/>Let&rsquo;s Encrypt</a> for TLS, so the other middleware I put in place is a <a href=https://github.com/aashishkoirala/listor/blob/master/AK.Listor/HttpsVerifier.cs><code>HttpsVerifier</code></a> that I could use to easily set up an <a href=https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment>ACME</a> verification endpoint for when I renew the certificate.</p>
+<p>All in all, the application turned out to be useful, and I think it will serve as a nice playground for when I need to try out new technologies as they come out.</p>
+<p>Listor the application is hosted at <a href=https://listor.aashishkoirala.com>listor.aashishkoirala.com</a>.
+The source code can be found <a href=https://github.com/aashishkoirala/listor>on GitHub over here</a>.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/react/>react</a> <a href=https://aashishkoirala.github.io/tags/dotnetcore/>dotnetcore</a> <a href=https://aashishkoirala.github.io/tags/aspnetcore/>aspnetcore</a> <a href=https://aashishkoirala.github.io/tags/es6/>es6</a> <a href=https://aashishkoirala.github.io/tags/spa/>spa</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/an-azure-service-fabric-restarter-in-fsharp/>An Azure Service Fabric Restarter in F#</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/reader-writer-locking-with-async-await/>Reader-Writer Locking with Async-Await</a>
+</div>
+</div>
+</main>
+</body>
+</html>

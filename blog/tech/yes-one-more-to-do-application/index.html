@@ -1,0 +1,86 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Yes, One More To-Do Application &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Yes, One More To-Do Application</h1>
+<time datetime=2013-12-02T00:00:00Z class=post-date>Mon, Dec 2, 2013</time>
+<blockquote>
+<p><strong>UPDATE (2015/1/7)</strong></p>
+</blockquote>
+<blockquote>
+<p>This application has been re-written from scratch using some new stuff I learned. The new application is called <strong>CHORE</strong>. Understandably, the links to the application and source code as mentioned in the original post don&rsquo;t work anymore. I did not update them as I want the original post to stand as is. Here, however, are relevant links to the new application:</p>
+</blockquote>
+<blockquote>
+<p>The application is hosted <a href=http://chore.apphb.com>here</a>.</p>
+</blockquote>
+<blockquote>
+<p>The source code can be found <a href=http://github.com/aashishkoirala/chore>here</a>.</p>
+</blockquote>
+<blockquote>
+<p>More technical details can be found <a href=http://aashishkoirala.github.io/chore>here</a>.</p>
+</blockquote>
+<p>Yes, I figured the one thing that the world really needs is one more <a href=http://todo-17.apphb.com>To Do</a> application. Seriously, though, when I was working on <a href=finance-manager>Finance Manager</a>, I realized I made a few mistakes, specifically with the way I was doing Angular as well as building a REST API. I therefore wanted to build something simpler- yet something that I would personally use, and in the process try to do it &ldquo;more right&rdquo; and learn something in the process as well. I think two of the key new things I learned building this application was <a href=http://docs.angularjs.org/api/ngRoute.$route>routing</a> with Angular and working with <a href=http://www.mongodb.org/>MongoDB</a>. I ended up building a <a href=https://www.nuget.org/packages/AK.Commons.Providers.DataAccess.MongoDb>Mongo provider</a> for the <a href=the-commons-library>Commons Library</a> as well. I also think this servers as a better example of how to marry TypeScript with Angular.</p>
+<p>Here&rsquo;s a screenshot:</p>
+<p><img src=/blog-images/yes-one-more-to-do-application-screenshot.png alt=Screenshot></p>
+<p>I had my complaints about <a href=http://www.astrid.com/>Astrid</a>, but was getting used to it when it got yanked out of existence all of a sudden by Yahoo (good for them, though). Rather than trying to go and look for something else that worked for me, I decided to build it and learn something in the process as well (which sits well with my thoughts on when to roll your own as a developer - probably a post on that soon to follow). With this application I can create nested categories, create tasks within those categories, give them due dates and start dates - and walk them through a work-flow of created, started, in progress and done (or just created and done - depending on what kind of task it is). Two features I really like that I missed in Astrid is the ability to bulk import tasks from plain text - and the ability to perform bulk actions.</p>
+<p>This time, I also made sure I could actually deploy it to the cloud once I was done with it. It is deployed here, using <a href=https://appharbor.com/>AppHarbor</a>. Since I&rsquo;m too cheap to want to pay for a To Do application, I&rsquo;m using the free instance. I intend to use this for my own personal use, but if you plan to use it - be aware that this is a free, development instance and could disappear tomorrow. I would love it, however, if you wanted to look around and offer me feedback.</p>
+<p>Again, the application is deployed <a href=http://todo-17.apphb.com>here</a>, and the source code can be found <a href=http://github.com/aashishkoirala/todo>here</a>. More technical details can be found <a href=http://aashishkoirala.github.io/todo/>here</a>.</p>
+<p>Other than the obvious gaps to fill (as marked by the many &ldquo;TODO"s in the source code), one thing I definitely want to do at some point is build a mobile front-end to this - and also make the web UI use responsive layout (if you open the web application in a phone, it looks really messed up). Then there is always that colossal task of going back and fixing mistakes I made with <a href=finance-manager>Finance Manager</a>.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/finance-manager/>Finance Manager</a>
+<br>Next:
+<a href=https://aashishkoirala.github.io/blog/tech/on-rolling-your-own/>On Rolling Your Own</a>
+</div>
+</div>
+</main>
+</body>
+</html>
