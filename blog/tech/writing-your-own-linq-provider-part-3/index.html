@@ -51,14 +51,14 @@
 <time datetime=2014-03-15T00:00:00Z class=post-date>Sat, Mar 15, 2014</time>
 <p>This is the third in a short series of posts on writing your own LINQ provider. A quick outline of the series:</p>
 <ol>
-<li><a href=writing-your-own-linq-provider-part-1>A primer</a></li>
-<li><a href=writing-your-own-linq-provider-part-2>Provider basics</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-1/>A primer</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-2/>Provider basics</a></li>
 <li><strong>A simple, pointless solution</strong> (<em>this post</em>)</li>
-<li><a href=writing-your-own-linq-provider-part-4>A tiny ORM of our own</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-4/>A tiny ORM of our own</a></li>
 </ol>
 <hr>
 <h3 id=a-simple-pointless-solution>A simple, pointless solution</h3>
-<p>In the <a href=writing-your-own-linq-provider-part-2>previous post</a>, we took a look at what happens when you call LINQ methods on <code>IQueryable&lt;T></code>, and how you can use that to build your own provider. We take that a step further this time by building an actual provider - albeit a somewhat pointless one, in that it adds LINQ support to something that doesn&rsquo;t really need it. The point, though, is to keep it simple and try to understand how the process works.</p>
+<p>In the <a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-2/>previous post</a>, we took a look at what happens when you call LINQ methods on <code>IQueryable&lt;T></code>, and how you can use that to build your own provider. We take that a step further this time by building an actual provider - albeit a somewhat pointless one, in that it adds LINQ support to something that doesn&rsquo;t really need it. The point, though, is to keep it simple and try to understand how the process works.</p>
 <p>The best way to understand is to take a look at the source code first:</p>
 <ul>
 <li><a href=https://github.com/aashishkoirala/snippets/tree/master/src/NextProviderLinqProvider><strong>Click here for the source code for our solution</strong></a></li>

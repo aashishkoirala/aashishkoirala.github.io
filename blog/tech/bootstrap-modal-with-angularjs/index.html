@@ -71,7 +71,7 @@ app.controller('ctrl', function ($scope, ...) {
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p>In order to maintain separation of concerns, I want to be able to show or hide the modal as the value of <code>showModal</code> changes. This is another good use for directives in AngularJS. As with the <a href=conditional-jquery-datepicker-with-angularjs>datepicker example</a>, we need a directive that will add a <code>watch</code> on <code>link</code> and use the JavaScript methods available with Bootstrap to control the modal, rather than the <code>data-toggle</code> or <code>data-dismiss</code> attributes.</p>
+<p>In order to maintain separation of concerns, I want to be able to show or hide the modal as the value of <code>showModal</code> changes. This is another good use for directives in AngularJS. As with the <a href=https://aashishkoirala.github.io/blog/tech/conditional-jquery-datepicker-with-angularjs/>datepicker example</a>, we need a directive that will add a <code>watch</code> on <code>link</code> and use the JavaScript methods available with Bootstrap to control the modal, rather than the <code>data-toggle</code> or <code>data-dismiss</code> attributes.</p>
 <p>The directive would then look like:</p>
 <pre><code>app.directive('akModal', function() {
     return {

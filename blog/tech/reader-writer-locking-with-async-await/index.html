@@ -49,7 +49,7 @@
 <div class=post>
 <h1>Reader-Writer Locking with Async-Await</h1>
 <time datetime=2017-12-20T00:00:00Z class=post-date>Wed, Dec 20, 2017</time>
-<p>Consider this another pitfall warning. If you are a frequent user of <a href=reader-writer-locking-in-dotnet>reader/writer locking</a> (via the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.readerwriterlockslim?view=netframework-4.7.2"><code>ReaderWriterLockSlim</code></a> class) like I am, you will undoubtedly run into this situation. As more and more code we write these days are asynchronous with the use of <code>async/await</code>, it is easy to end up in the following situation (an oversimplification, but just imagine write locks in there as well):</p>
+<p>Consider this another pitfall warning. If you are a frequent user of <a href=https://aashishkoirala.github.io/blog/tech/reader-writer-locking-in-dotnet/>reader/writer locking</a> (via the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.readerwriterlockslim?view=netframework-4.7.2"><code>ReaderWriterLockSlim</code></a> class) like I am, you will undoubtedly run into this situation. As more and more code we write these days are asynchronous with the use of <code>async/await</code>, it is easy to end up in the following situation (an oversimplification, but just imagine write locks in there as well):</p>
 <pre><code>async Task MyMethod()
 {
 	...

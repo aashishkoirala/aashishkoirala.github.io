@@ -51,14 +51,14 @@
 <time datetime=2014-03-16T00:00:00Z class=post-date>Sun, Mar 16, 2014</time>
 <p>This is the last in a short series of posts on writing your own LINQ provider. A quick outline of the series:</p>
 <ol>
-<li><a href=writing-your-own-linq-provider-part-1>A primer</a></li>
-<li><a href=writing-your-own-linq-provider-part-2>Provider basics</a></li>
-<li><a href=writing-your-own-linq-provider-part-3>A simple, pointless solution</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-1/>A primer</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-2/>Provider basics</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-3/>A simple, pointless solution</a></li>
 <li><strong>A tiny ORM of our own</strong> (<em>this post</em>)</li>
 </ol>
 <hr>
 <h3 id=a-tiny-orm-of-our-own>A tiny ORM of our own</h3>
-<p>In the <a href=writing-your-own-linq-provider-part-3>previous post</a>, we took a look at a simple, albeit pointless example of a LINQ provider. We wrap the series up this time by looking at something a little less pointless - a LINQ-based ORM, albeit a very rudimentary one. As with the previous one, it helps to take a look at the source code first:</p>
+<p>In the <a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-3/>previous post</a>, we took a look at a simple, albeit pointless example of a LINQ provider. We wrap the series up this time by looking at something a little less pointless - a LINQ-based ORM, albeit a very rudimentary one. As with the previous one, it helps to take a look at the source code first:</p>
 <ul>
 <li><a href=https://github.com/aashishkoirala/snippets/tree/master/src/TinyOrm><strong>Click here for the source code for our tiny ORM</strong></a></li>
 </ul>
@@ -104,7 +104,7 @@
                 orderby item.Name
                 select new { item.Id, item.Name, item.Date }).ToArray();
 </code></pre>
-<p>If you recall <strong>Step 2</strong> from <a href=writing-your-own-linq-provider-part-2>provider basics</a>, there were two options. The <a href=writing-your-own-linq-provider-part-3>last solution</a> used Option 1, i.e. there is one queryable that just builds up the expression and the enumerator does the parsing. For this one, we&rsquo;re using Option 2, where we have a separate implementation of <code>IQueryable&lt;T></code> for each type of query operation to support.</p>
+<p>If you recall <strong>Step 2</strong> from <a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-2/>provider basics</a>, there were two options. The <a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-3/>last solution</a> used Option 1, i.e. there is one queryable that just builds up the expression and the enumerator does the parsing. For this one, we&rsquo;re using Option 2, where we have a separate implementation of <code>IQueryable&lt;T></code> for each type of query operation to support.</p>
 <p>When you first obtain a queryable, you get an instance of <code>TableQueryable</code> (which is descended from <code>SqlQueryable</code>) corresponding to the table that the type is mapped to. Each call on top of it then wraps the queryable in another descedant of <code>SqlQueryable</code> (e.g. <code>WhereQueryable</code> for <code>Where</code> operations, and so on). This logic is in <code>SqlQueryProvider</code>. Similarly, for executable methods, the appropriate type of <code>ExecutableBase</code> is created and called. Beyond this, the actual query creation logic is implemented in the individual queryables and executables defined within the <code>Constructs</code> namespace.</p>
 <p>The queryables and executables work with classes within the <code>QueryModel</code> namespace that represent parts of a SQL query. Based on what operation they stand for, they convert an <code>Expression</code> into a <code>Query</code>, which can then be converted into a SQL string. Each queryable implements a <code>Parse</code> method that does this, and as part of doing this, it parses the queryable it wraps and then works on top of the <code>Query</code> object returned by the inner <code>Parse</code>, and so on until the top-most enumerable gives you the final query. The innermost or leaf queryable is always <code>TableQueryable</code> which simply adds the name of the source table to the query model.</p>
 <p>LINQ is undoubtedly awesome, but knowing how it works gives you new appreciation for just how powerful it can be. Man, I love LINQ.</p>

@@ -50,7 +50,7 @@
 <h1>Reader Writer Locking In .NET</h1>
 <time datetime=2014-02-18T00:00:00Z class=post-date>Tue, Feb 18, 2014</time>
 <p>Quite often people turn to the <a href=http://msdn.microsoft.com/en-us/library/c5kehkcz.aspx><code>lock</code></a> statement when protecting access to shared resources from multiple threads. A lot of times, though, this is too big of a hammer. This is because to maintain the integrity of the lock, any access of the protected resource, be it simply accessing its value or modifying it, needs to be done within the lock. This means even concurrent reads get serialized. A lot of times, what you need is for concurrent reads to be possible as long as they read a consistent value, while writes are serialized.</p>
-<p>This is exactly what reader/writer locking is for. I ran into the same scenario while building <a href=rudymq-a-rudimentary-message-queue-for-windows>RudyMQ</a> and the framework class <a href="http://msdn.microsoft.com/en-us/library/system.threading.readerwriterlockslim(v=vs.110).aspx"><code>ReaderWriterLockSlim</code></a> class came in handy (in case you&rsquo;re wondering about the &ldquo;slim&rdquo; in the name, this class is supposed to be a slimmed down, more efficient version of the now somewhat deprecated <a href="http://msdn.microsoft.com/en-us/library/system.threading.readerwriterlock(v=vs.110).aspx"><code>ReaderWriterLock</code></a> class).</p>
+<p>This is exactly what reader/writer locking is for. I ran into the same scenario while building <a href=https://aashishkoirala.github.io/blog/tech/rudymq-a-rudimentary-message-queue-for-windows/>RudyMQ</a> and the framework class <a href="http://msdn.microsoft.com/en-us/library/system.threading.readerwriterlockslim(v=vs.110).aspx"><code>ReaderWriterLockSlim</code></a> class came in handy (in case you&rsquo;re wondering about the &ldquo;slim&rdquo; in the name, this class is supposed to be a slimmed down, more efficient version of the now somewhat deprecated <a href="http://msdn.microsoft.com/en-us/library/system.threading.readerwriterlock(v=vs.110).aspx"><code>ReaderWriterLock</code></a> class).</p>
 <p>Here is a very simplified rundown of how <code>ReaderWriterLockSlim</code> works. Given an object <code>rwls</code> of type <code>ReaderWriterLockSlim</code>:</p>
 <pre><code>// This will block if another thread has entered a write lock
 // on &quot;rwls&quot;.
@@ -147,7 +147,7 @@ finally
 </code></pre>
 <p>When you think about how those classes can then be used, I think it cuts down on quite a bit of the boilerplate - and that is usually good.</p>
 <p><strong>UPDATE</strong></p>
-<p>I am working on building these classes into the <a href=the-commons-library>Commons Library</a>. You can find the full source code for these classes as follows:</p>
+<p>I am working on building these classes into the <a href=https://aashishkoirala.github.io/blog/tech/the-commons-library/>Commons Library</a>. You can find the full source code for these classes as follows:</p>
 <ul>
 <li><a href=https://github.com/aashishkoirala/commons/blob/develop/src/AK.Commons/Threading/LockedObject.cs>Source code for <code>LockedObject</code></a></li>
 <li><a href=https://github.com/aashishkoirala/commons/blob/develop/src/AK.Commons/Threading/LockedValue.cs>Source code for <code>LockedValue</code></a></li>

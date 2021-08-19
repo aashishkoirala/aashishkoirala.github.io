@@ -51,14 +51,14 @@
 <time datetime=2014-03-12T00:00:00Z class=post-date>Wed, Mar 12, 2014</time>
 <p>This is the second in a short series of posts on writing your own LINQ provider. A quick outline of the series:</p>
 <ol>
-<li><a href=writing-your-own-linq-provider-part-1>A primer</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-1/>A primer</a></li>
 <li><strong>Provider basics</strong> (<em>this post</em>)</li>
-<li><a href=writing-your-own-linq-provider-part-3>A simple, pointless solution</a></li>
-<li><a href=writing-your-own-linq-provider-part-4>A tiny ORM of our own</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-3/>A simple, pointless solution</a></li>
+<li><a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-4/>A tiny ORM of our own</a></li>
 </ol>
 <hr>
 <h3 id=provider-basics>Provider Basics</h3>
-<p>In the <a href=writing-your-own-linq-provider-part-1>previous post</a>, we took a look at the two flavors of LINQ methods, i.e. the methods and classes around <code>IEnumerable&lt;T></code> and the methods and classes around <code>IQueryable&lt;T></code>. In this post, we expand upon what happens when you call LINQ methods on <code>IQueryable&lt;T></code>, and how you can use that to build your own provider.</p>
+<p>In the <a href=https://aashishkoirala.github.io/blog/tech/writing-your-own-linq-provider-part-1/>previous post</a>, we took a look at the two flavors of LINQ methods, i.e. the methods and classes around <code>IEnumerable&lt;T></code> and the methods and classes around <code>IQueryable&lt;T></code>. In this post, we expand upon what happens when you call LINQ methods on <code>IQueryable&lt;T></code>, and how you can use that to build your own provider.</p>
 <p>Once you have an instance of <code>IQueryable&lt;T></code>, you can do one of three things with it:</p>
 <ol>
 <li>Enumerate it, using one of the following methods:
