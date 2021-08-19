@@ -1,0 +1,134 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
+<head>
+<link href=https://gmpg.org/xfn/11 rel=profile>
+<meta http-equiv=x-ua-compatible content="chrome=1">
+<meta charset=utf-8>
+<meta name=robots content="index,follow">
+<meta name=apple-mobile-web-app-title content="Aashish Koirala">
+<meta name=application-name content="Aashish Koirala">
+<meta name=msapplication-TileColor content="#00aba9">
+<meta name=theme-color content="#ffffff">
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Simple Console Application in .NET Core with DI and Configuration &#183; Aashish Koirala</title>
+<meta name=description content>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+</head>
+<body class=theme-base-0d>
+<aside class=sidebar>
+<div class="container sidebar-sticky">
+<div class=sidebar-about>
+<a href=https://aashishkoirala.github.io/>
+<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<h1>aashish<b>koirala</b></h1>
+</a>
+<p class=lead>Software Developer. Overthinker.</p>
+</div>
+<nav>
+<ul class=sidebar-nav>
+<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
+</ul>
+</nav>
+<p>&copy; 2021. All rights reserved. </p>
+</div>
+</aside>
+<main class="content container">
+<div class=post>
+<h1>Simple Console Application in .NET Core with DI and Configuration</h1>
+<time datetime=2020-07-21T00:00:00Z class=post-date>Tue, Jul 21, 2020</time>
+<p>While the .NET Core documentation and libraries do a good job of providing an easy way to get started with hosted apps (web or otherwise), it is somewhat lacking in terms of the same guidance for simple run-to-completion type console apps. You can write a simple <code>Main()</code> method and do your stuff, but how do you get the advantage of the amazing configuration and dependency injection that you get out of the box with hosted apps? Surely, you could set up all that machinery and maybe create an <code>IHostedService</code> implementation just to get going. Even then, you are still left with a hosted app that you have to deal with shutting down after your logic is done.</p>
+<p>If you look behind the builder methods that come out of the box with hosted apps, you will find that there is an easy way to get the good DI and configuration stuff and keep your simple <code>Main()</code> method app simple. To that end, I&rsquo;ve written up a little <code>ProgramRunner</code> class that you can plop in and use as so (example .NET Core 3.1 code follows):</p>
+<pre><code>public class ProgramOptions
+{
+    public string SomeOption { get; set; }
+}
+
+public class Program
+{
+    private readonly ProgramOptions _programOptions;
+
+    public Program(IOptions&lt;ProgramOptions&gt; programOptions) =&gt; _programOptions = programOptions.Value;
+
+    public static void Main(string[] args)
+    {
+        ProgramRunner
+            .WithConfiguration(c =&gt; c.AddJsonFile(&quot;appsettings.json&quot;))
+            .AndServices((s, c) =&gt; s
+                .Configure&lt;ProgramOptions&gt;(o =&gt; c.Bind(o))
+                .AddSingleton&lt;Program&gt;())
+            .Run(p =&gt; p.GetService&lt;Program&gt;().Run());
+    }
+
+    public void Run() =&gt; Console.WriteLine(_programOptions.SomeOption);
+}
+</code></pre>
+<p>Easy.</p>
+<p>Here is the code for <code>ProgramRunner</code> referenced above (perhaps I will put it into a library at some point):</p>
+<pre><code>public class ProgramRunner
+{
+    private Action&lt;IConfigurationBuilder&gt; _configurationBuilderAction;
+    private Action&lt;IServiceCollection, IConfiguration&gt; _serviceCollectionAction;
+
+    private ProgramRunner() { }
+
+    public ProgramRunner AndConfiguration(Action&lt;IConfigurationBuilder&gt; configurationBuilderAction)
+    {
+        _configurationBuilderAction = configurationBuilderAction;
+        return this;
+    }
+
+    public ProgramRunner AndServices(Action&lt;IServiceCollection, IConfiguration&gt; serviceCollectionAction)
+    {
+        _serviceCollectionAction = serviceCollectionAction;
+        return this;
+    }
+
+    public static ProgramRunner WithConfiguration(Action&lt;IConfigurationBuilder&gt; configurationBuilderAction) =&gt; new ProgramRunner().AndConfiguration(configurationBuilderAction);
+    public static ProgramRunner WithServices(Action&lt;IServiceCollection, IConfiguration&gt; serviceCollectionAction) =&gt; new ProgramRunner().AndServices(serviceCollectionAction);
+
+    private IServiceProvider GetServiceProvider()
+    {
+        var configurationBuilder = new ConfigurationBuilder();
+        _configurationBuilderAction?.Invoke(configurationBuilder);
+        
+        var configuration = configurationBuilder.Build();
+
+        var serviceCollection = new ServiceCollection();
+        _serviceCollectionAction?.Invoke(serviceCollection, configuration);
+        
+        return serviceCollection.BuildServiceProvider();
+    }
+
+    public void Run(Action&lt;IServiceProvider&gt; runAction) =&gt; runAction(GetServiceProvider());
+    
+    public T Run&lt;T&gt;(Func&lt;IServiceProvider, T&gt; runAction) =&gt; runAction(GetServiceProvider());
+    
+    public Task RunAsync(Func&lt;IServiceProvider, CancellationToken, Task&gt; runAction, CancellationToken cancellationToken = default) =&gt; runAction(GetServiceProvider(), cancellationToken);
+    
+    public Task&lt;T&gt; RunAsync&lt;T&gt;(Func&lt;IServiceProvider, CancellationToken, Task&lt;T&gt;&gt; runAction, CancellationToken cancellationToken = default) =&gt; runAction(GetServiceProvider(), cancellationToken);
+</code></pre>
+<p>And there you have it.</p>
+<div style=font-size:smaller>
+<br><br>
+Tags:
+<a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.github.io/tags/dotnetcore/>dotnetcore</a> <a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dependencyinjection/>dependencyinjection</a> <a href=https://aashishkoirala.github.io/tags/configuration/>configuration</a>
+<br>Previous:
+<a href=https://aashishkoirala.github.io/blog/tech/an-aws-primer-for-azure-developers/>An AWS Primer for Azure Developers</a>
+</div>
+</div>
+</main>
+</body>
+</html>
