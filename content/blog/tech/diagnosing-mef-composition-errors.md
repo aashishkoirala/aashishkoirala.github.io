@@ -1,6 +1,8 @@
 ---
 title: Diagnosing MEF Composition Errors
 slug: diagnosing-mef-composition-errors
+aliases:
+- /blog/diagnosing-mef-composition-errors
 date: 2014-10-15
 draft: false
 tags:

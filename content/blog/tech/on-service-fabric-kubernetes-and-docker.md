@@ -1,6 +1,8 @@
 ---
 title: On Service Fabric, Kubernetes and Docker
 slug: on-service-fabric-kubernetes-and-docker
+aliases:
+- /blog/on-service-fabric-kubernetes-and-docker
 date: 2018-10-01
 draft: false
 tags:

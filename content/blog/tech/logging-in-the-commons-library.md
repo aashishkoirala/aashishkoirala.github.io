@@ -1,6 +1,8 @@
 ---
 title: Logging in the Commons Library
 slug: logging-in-the-commons-library
+aliases:
+- /blog/logging-in-the-commons-library
 date: 2013-08-20
 draft: false
 tags:

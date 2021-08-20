@@ -1,6 +1,8 @@
 ---
 title: Listor- Showcasing React and .NET Core
 slug: listor-showcasing-react-and-dotnet-core
+aliases:
+- /blog/listor-showcasing-react-and-dotnet-core
 date: 2017-11-20
 draft: false
 tags:

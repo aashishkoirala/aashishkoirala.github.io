@@ -1,6 +1,8 @@
 ---
 title: Reader Writer Locking In .NET
 slug: reader-writer-locking-in-dotnet
+aliases:
+- /blog/reader-writer-locking-in-dotnet
 date: 2014-02-18
 draft: false
 tags:

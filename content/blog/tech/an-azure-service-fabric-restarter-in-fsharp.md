@@ -1,6 +1,8 @@
 ---
 title: An Azure Service Fabric Restarter in F#
 slug: an-azure-service-fabric-restarter-in-fsharp
+aliases:
+- /blog/an-azure-service-fabric-restarter-in-fsharp
 date: 2017-03-15
 draft: false
 tags:

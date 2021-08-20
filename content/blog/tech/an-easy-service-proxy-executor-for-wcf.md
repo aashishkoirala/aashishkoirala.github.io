@@ -1,6 +1,8 @@
 ---
 title: An Easy Service Proxy Executor for WCF
 slug: an-easy-service-proxy-executor-for-wcf
+aliases:
+- /blog/an-easy-service-proxy-executor-for-wcf
 date: 2014-05-15
 draft: false
 tags:

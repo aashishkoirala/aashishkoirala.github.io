@@ -1,6 +1,8 @@
 ---
 title: Data Access in the Commons Library
 slug: data-access-in-the-commons-library
+aliases:
+- /blog/data-access-in-the-commons-library
 date: 2013-08-25
 draft: false
 tags:

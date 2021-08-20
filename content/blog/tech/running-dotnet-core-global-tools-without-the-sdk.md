@@ -1,6 +1,8 @@
 ---
 title: Running .NET Core Global Tools Without the SDK
 slug: running-dotnet-core-global-tools-without-the-sdk
+aliases:
+- /blog/running-dotnet-core-global-tools-without-the-sdk
 date: 2019-09-06
 draft: false
 tags:

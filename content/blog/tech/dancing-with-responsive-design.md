@@ -1,6 +1,8 @@
 ---
 title: Dancing with Responsive Design
 slug: dancing-with-responsive-design
+aliases:
+- /blog/dancing-with-responsive-design
 date: 2013-12-05
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: Handling Duplicate Libraries with MEF
 slug: handling-duplicate-libraries-with-mef
+aliases:
+- /blog/handling-duplicate-libraries-with-mef
 date: 2013-08-09
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: The Rise of Go
 slug: the-rise-of-go
+aliases:
+- /blog/the-rise-of-go
 date: 2020-01-20
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: Two Types of Domain Events
 slug: two-types-of-domain-events
+aliases:
+- /blog/two-types-of-domain-events
 date: 2014-09-17
 draft: false
 tags:

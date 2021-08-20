@@ -1,6 +1,8 @@
 ---
 title: Reader-Writer Locking with Async-Await
 slug: reader-writer-locking-with-async-await
+aliases:
+- /blog/reader-writer-locking-with-async-await
 date: 2017-12-20
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: Simple Console Application in .NET Core with DI and Configuration
 slug: simple-console-application-in-dotnet-core-with-di-and-configuration
+aliases:
+- /blog/simple-console-application-in-dotnet-core-with-di-and-configuration
 date: 2020-07-21
 draft: false
 tags:

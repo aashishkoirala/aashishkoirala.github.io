@@ -1,6 +1,8 @@
 ---
 title: Oatmeal, it's what's for breakfast!
 slug: oatmeal-its-whats-for-breakfast
+aliases:
+- /blog/oatmeal-its-whats-for-breakfast
 date: 2014-06-03
 draft: false
 tags:

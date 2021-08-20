@@ -1,6 +1,8 @@
 ---
 title: Bye, Bye, TypeScript, for now
 slug: bye-bye-typescript-for-now
+aliases:
+- /blog/bye-bye-typescript-for-now
 date: 2014-04-15
 draft: false
 tags:

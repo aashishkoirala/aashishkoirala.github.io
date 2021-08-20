@@ -1,6 +1,8 @@
 ---
 title: RudyMQ- A Rudimentary Message Queue for Windows
 slug: rudymq-a-rudimentary-message-queue-for-windows
+aliases:
+- /blog/rudymq-a-rudimentary-message-queue-for-windows
 date: 2014-02-11
 draft: false
 tags:

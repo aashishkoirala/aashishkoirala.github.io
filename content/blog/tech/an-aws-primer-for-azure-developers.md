@@ -1,6 +1,8 @@
 ---
 title: An AWS Primer for Azure Developers
 slug: an-aws-primer-for-azure-developers
+aliases:
+- /blog/an-aws-primer-for-azure-developers
 date: 2020-04-15
 draft: false
 tags:

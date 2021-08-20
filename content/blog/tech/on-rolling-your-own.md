@@ -1,6 +1,8 @@
 ---
 title: On Rolling Your Own
 slug: on-rolling-your-own
+aliases:
+- /blog/on-rolling-your-own
 date: 2013-12-03
 draft: false
 tags:

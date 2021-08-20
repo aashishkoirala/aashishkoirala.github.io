@@ -1,6 +1,8 @@
 ---
 title: Moving to Azure PaaS and Service Fabric- Part 1
 slug: moving-to-azure-paas-and-service-fabric-part-1
+aliases:
+- /blog/moving-to-azure-paas-and-service-fabric-part-1
 date: 2017-01-15
 draft: false
 tags:

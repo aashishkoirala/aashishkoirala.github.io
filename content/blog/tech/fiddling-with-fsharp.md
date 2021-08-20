@@ -1,6 +1,8 @@
 ---
 title: Fiddling with F#
 slug: fiddling-with-fsharp
+aliases:
+- /blog/fiddling-with-fsharp
 date: 2016-06-05
 draft: false
 tags:

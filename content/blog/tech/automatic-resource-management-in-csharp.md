@@ -1,6 +1,8 @@
 ---
 title: Automatic Resource Management in C#
 slug: automatic-resource-management-in-csharp
+aliases:
+- /blog/automatic-resource-management-in-csharp
 date: 2012-02-27
 draft: false
 tags:

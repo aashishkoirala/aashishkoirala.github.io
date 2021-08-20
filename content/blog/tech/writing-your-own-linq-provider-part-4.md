@@ -1,6 +1,8 @@
 ---
 title: Writing Your Own LINQ Provider- Part 4
 slug: writing-your-own-linq-provider-part-4
+aliases:
+- /blog/writing-your-own-linq-provider-part-4
 date: 2014-03-16
 draft: false
 tags:

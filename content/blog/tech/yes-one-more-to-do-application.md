@@ -1,6 +1,8 @@
 ---
 title: Yes, One More To-Do Application
 slug: yes-one-more-to-do-application
+aliases:
+- /blog/yes-one-more-to-do-application
 date: 2013-12-02
 draft: false
 tags:

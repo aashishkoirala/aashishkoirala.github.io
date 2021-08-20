@@ -1,6 +1,8 @@
 ---
 title: Installing PFX Certificates in Docker Containers
 slug: installing-pfx-certificates-in-docker-containers
+aliases:
+- /blog/installing-pfx-certificates-in-docker-containers
 date: 2019-09-09
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: Conditional JQuery Datepicker With AngularJS
 slug: conditional-jquery-datepicker-with-angularjs
+aliases:
+- /blog/conditional-jquery-datepicker-with-angularjs
 date: 2014-03-07
 draft: false
 tags:

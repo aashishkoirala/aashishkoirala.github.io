@@ -1,6 +1,8 @@
 ---
 title: A Method for Service-Oriented Architecture (SOA)
 slug: a-method-for-service-oriented-architecture-soa
+aliases:
+- /blog/a-method-for-service-oriented-architecture-soa
 date: 2014-07-17
 draft: false
 tags:

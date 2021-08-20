@@ -1,6 +1,8 @@
 ---
 title: Beware of this WCF Serialization Pitfall
 slug: beware-of-this-wcf-serialization-pitfall
+aliases:
+- /blog/beware-of-this-wcf-serialization-pitfall
 date: 2014-12-02
 draft: false
 tags:

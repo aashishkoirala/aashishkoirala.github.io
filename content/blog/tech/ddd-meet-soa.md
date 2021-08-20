@@ -1,6 +1,8 @@
 ---
 title: DDD, meet SOA
 slug: ddd-meet-soa
+aliases:
+- /blog/ddd-meet-soa
 date: 2014-08-13
 draft: false
 tags:

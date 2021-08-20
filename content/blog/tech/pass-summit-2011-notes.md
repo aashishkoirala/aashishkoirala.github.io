@@ -1,6 +1,8 @@
 ---
 title: PASS Summit 2011 Notes
 slug: pass-summit-2011-notes
+aliases:
+- /blog/pass-summit-2011-notes
 date: 2011-11-19
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: Getting on the Domain-Driven Design Bandwagon
 slug: getting-on-the-domain-driven-design-bandwagon
+aliases:
+- /blog/getting-on-the-domain-driven-design-bandwagon
 date: 2014-06-16
 draft: false
 tags:

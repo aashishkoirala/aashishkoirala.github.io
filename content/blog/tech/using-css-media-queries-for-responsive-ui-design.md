@@ -1,6 +1,8 @@
 ---
 title: Using CSS Media Queries for Responsive UI Design
 slug: using-css-media-queries-for-responsive-ui-design
+aliases:
+- /blog/using-css-media-queries-for-responsive-ui-design
 date: 2014-11-11
 draft: false
 tags:

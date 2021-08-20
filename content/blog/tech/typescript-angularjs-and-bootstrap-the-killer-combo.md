@@ -1,6 +1,8 @@
 ---
 title: TypeScript, AngularJS and Bootstrap- The Killer Combo
 slug: typescript-angularjs-and-bootstrap-the-killer-combo
+aliases:
+- /blog/typescript-angularjs-and-bootstrap-the-killer-combo
 date: 2013-08-30
 draft: false
 tags:

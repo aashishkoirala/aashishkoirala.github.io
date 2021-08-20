@@ -1,6 +1,8 @@
 ---
 title: Getting Functional With Perhaps
 slug: getting-functional-with-perhaps
+aliases:
+- /blog/getting-functional-with-perhaps
 date: 2014-03-04
 draft: false
 tags:

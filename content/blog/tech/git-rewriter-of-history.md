@@ -1,6 +1,8 @@
 ---
 title: Git- Rewriter of History
 slug: git-rewriter-of-history
+aliases:
+- /blog/git-rewriter-of-history
 date: 2015-01-07
 draft: false
 tags:

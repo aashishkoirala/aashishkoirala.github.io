@@ -1,6 +1,8 @@
 ---
 title: Azure DevOps for CI and CD
 slug: azure-devops-for-ci-and-cd
+aliases:
+- /blog/azure-devops-for-ci-and-cd
 date: 2018-11-01
 draft: false
 tags:

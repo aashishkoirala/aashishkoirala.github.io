@@ -1,6 +1,8 @@
 ---
 title: OAuth2 and OpenID Connect versus WS and SAML
 slug: oauth2-and-openid-connect-versus-ws-and-saml
+aliases:
+- /blog/oauth2-and-openid-connect-versus-ws-and-saml
 date: 2017-02-20
 draft: false
 tags:

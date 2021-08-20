@@ -1,6 +1,8 @@
 ---
 title: Moving to Azure PaaS and Service Fabric- Part 2
 slug: moving-to-azure-paas-and-service-fabric-part-2
+aliases:
+- /blog/moving-to-azure-paas-and-service-fabric-part-2
 date: 2017-01-30
 draft: false
 tags:
@@ -10,7 +12,7 @@ tags:
 ---
 This is Part 2 of a two-part blog series:
 
-- [Part 1{{< ref "moving-to-azure-paas-and-service-fabric-part-1" >}}) (Application- Services, Security and UI)
+- [Part 1]({{< ref "moving-to-azure-paas-and-service-fabric-part-1" >}}) (Application- Services, Security and UI)
 - Part 2 (this one; Database, Configuration, Logging, Caching, Service Bus, Emails, Tooling, Rollout)
 
 ---

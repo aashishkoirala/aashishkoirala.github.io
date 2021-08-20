@@ -1,6 +1,8 @@
 ---
 title: Where the Crow Came to Die
 slug: where-the-crow-came-to-die
+aliases:
+- /blog/where-the-crow-came-to-die
 date: 2008-07-30
 draft: false
 tags:

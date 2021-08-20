@@ -1,6 +1,8 @@
 ---
 title: Introduction to NodeJS
 slug: introduction-to-nodejs
+aliases:
+- /blog/introduction-to-nodejs
 date: 2012-04-12
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: Writing a WS-Federation Based STS using WIF
 slug: writing-a-ws-federation-based-sts-using-wif
+aliases:
+- /blog/writing-a-ws-federation-based-sts-using-wif
 date: 2015-02-10
 draft: false
 tags:

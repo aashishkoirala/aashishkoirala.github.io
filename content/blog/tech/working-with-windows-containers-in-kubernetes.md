@@ -1,6 +1,8 @@
 ---
 title: Working with Windows Containers in Kubernetes
 slug: working-with-windows-containers-in-kubernetes
+aliases:
+- /blog/working-with-windows-containers-in-kubernetes
 date: 2019-09-12
 draft: false
 tags:

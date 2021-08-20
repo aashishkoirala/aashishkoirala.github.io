@@ -1,6 +1,8 @@
 ---
 title: The New Way Forward for SPAs with Angular and React
 slug: the-new-way-forward-for-spas-with-angular-and-react
+aliases:
+- /blog/the-new-way-forward-for-spas-with-angular-and-react
 date: 2016-12-01
 draft: false
 tags:

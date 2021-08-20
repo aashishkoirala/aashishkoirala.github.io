@@ -1,6 +1,8 @@
 ---
 title: The Commons Library
 slug: the-commons-library
+aliases:
+- /blog/the-commons-library
 date: 2013-08-02
 draft: false
 tags:

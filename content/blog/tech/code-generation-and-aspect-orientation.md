@@ -1,6 +1,8 @@
 ---
 title: Code Generation And Aspect Orientation
 slug: code-generation-and-aspect-orientation
+aliases:
+- /blog/code-generation-and-aspect-orientation
 date: 2014-02-26
 draft: false
 tags:

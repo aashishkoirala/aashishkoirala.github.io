@@ -1,6 +1,8 @@
 ---
 title: Bootstrap Modal With AngularJS
 slug: bootstrap-modal-with-angularjs
+aliases:
+- /blog/bootstrap-modal-with-angularjs
 date: 2014-03-17
 draft: false
 tags:

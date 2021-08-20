@@ -1,6 +1,8 @@
 ---
 title: Finance Manager
 slug: finance-manager
+aliases:
+- /blog/finance-manager
 date: 2013-09-04
 draft: false
 tags:

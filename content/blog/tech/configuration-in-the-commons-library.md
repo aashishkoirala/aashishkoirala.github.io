@@ -1,6 +1,8 @@
 ---
 title: Configuration in the Commons Library
 slug: configuration-in-the-commons-library
+aliases:
+- /blog/configuration-in-the-commons-library
 date: 2013-08-15
 draft: false
 tags:

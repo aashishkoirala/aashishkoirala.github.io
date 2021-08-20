@@ -1,6 +1,8 @@
 ---
 title: MEF for everything!
 slug: mef-for-everything
+aliases:
+- /blog/mef-for-everything
 date: 2013-08-07
 draft: false
 tags:

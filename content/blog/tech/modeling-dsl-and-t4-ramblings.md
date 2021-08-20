@@ -1,6 +1,8 @@
 ---
 title: Modeling, DSL and T4- Ramblings
 slug: modeling-dsl-and-t4-ramblings
+aliases:
+- /blog/modeling-dsl-and-t4-ramblings
 date: 2013-09-03
 draft: false
 tags:

@@ -1,6 +1,8 @@
 ---
 title: Revisiting Kubernetes vs. Service Fabric
 slug: revisiting-kubernetes-vs-service-fabric
+aliases:
+- /blog/revisiting-kubernetes-vs-service-fabric
 date: 2019-11-13
 draft: false
 tags:

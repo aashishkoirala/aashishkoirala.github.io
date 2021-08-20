@@ -1,6 +1,8 @@
 ---
 title: Providers for the Commons Library
 slug: providers-for-the-commons-library
+aliases:
+- /blog/providers-for-the-commons-library
 date: 2013-08-27
 draft: false
 tags:
