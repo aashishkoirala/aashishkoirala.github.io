@@ -1,0 +1,20 @@
+baseURL = "https://aashishkoirala.com/"
+languageCode = "en-us"
+title = "Aashish Koirala"
+theme = "hyde"
+enableRobotsTXT = true
+
+[menus]
+  main = [
+      {Name = "About Me", URL = "/about", weight = 1},
+      {Name = "Github", URL = "https://github.com/aashishkoirala/", weight = 2},
+      {Name = "Twitter", URL = "https://twitter.com/aashishkoirala/", weight = 3},
+      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/aashishkoirala/", weight = 4},
+      {Name = "Blog Posts - Tech", URL = "/blog/tech", weight = 5}
+      {Name = "Blog Posts - Non-Tech", URL = "/blog/nontech", weight = 6},
+      {Name = "Subscribe (RSS)", URL = "/index.xml", weight = 7}
+  ]
+
+[params]
+  description = "Software Developer. Overthinker."
+  themeColor = "theme-base-0d"

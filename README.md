@@ -1,4 +1,4 @@
-aashishkoirala.github.io
-========================
+aashishkoirala.com
+==================
 
-Aashish Koirala's GitHub Pages
+This is the source for my personal website at [aashishkoirala.com](https://aashishkoirala.com).

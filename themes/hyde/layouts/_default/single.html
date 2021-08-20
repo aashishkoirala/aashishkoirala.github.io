@@ -1,0 +1,37 @@
+{{ define "main" -}}
+<div class="post">
+  <h1>{{ .Title }}</h1>
+  {{ if (ne .Slug "about") }}
+  <time datetime={{ .Date.Format "2006-01-02T15:04:05Z0700" }} class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+  {{ end }}
+  {{ .Content }}
+
+  {{ if (ne .Slug "about") }}
+  <div style="font-size: smaller">
+    <br/><br/>
+    {{ $taxonomy := "tags" }}
+      {{ with .Param $taxonomy }}
+        Tags:
+        {{ range $index, $tag := . }} {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy $tag) -}}
+          <a href="{{ .Permalink }}">{{ $tag | urlize }}</a>
+        {{- end -}}
+      {{- end -}}
+    {{ end }}
+    {{ if .PrevInSection }}
+      <br/>Previous:
+      <a href="{{.PrevInSection.Permalink}}">{{.PrevInSection.Title}}</a>
+    {{ end }}
+    {{ if .NextInSection }}
+      <br/>Next:
+      <a href="{{.NextInSection.Permalink}}">{{.NextInSection.Title}}</a>
+    {{ end }}  
+  </div>
+  {{ end }}
+</div>
+
+
+{{ if .Site.DisqusShortname -}}
+<h2>Comments</h2>
+{{ template "_internal/disqus.html" . }}
+{{- end }}
+{{- end }}
