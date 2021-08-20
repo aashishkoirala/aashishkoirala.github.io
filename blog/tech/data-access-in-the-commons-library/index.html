@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Data Access in the Commons Library &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -49,7 +49,7 @@
 <div class=post>
 <h1>Data Access in the Commons Library</h1>
 <time datetime=2013-08-25T00:00:00Z class=post-date>Sun, Aug 25, 2013</time>
-<p>The data access block in the <a href=https://aashishkoirala.github.io/blog/tech/the-commons-library/>Commons Library</a> is based on the <em>Unit of Work</em> and <em>Repository</em> patterns - or at least my take on them.</p>
+<p>The data access block in the <a href=https://aashishkoirala.com/blog/tech/the-commons-library/>Commons Library</a> is based on the <em>Unit of Work</em> and <em>Repository</em> patterns - or at least my take on them.</p>
 <h4 id=unit-of-work>Unit of Work</h4>
 <p>You start with a unit-of-work factory (which is an implementation if <code>IUnitOfWorkFactory</code>) and call <code>Create</code> on it to get an instance of <code>IUnitOfWork</code> which is also <code>IDisposable</code>. So, you get a unit-of-work and do your business inside a <code>using</code> block, and call <code>Commit</code> before you leave the block. Methods in <code>IUnitOfWork</code> are all based on working with a specific entity type (which is just a POCO with an identifier field) and uses LINQ and <code>IQueryable</code> - makes it easy to use as a consumer, but also makes it easy to implement providers as most providers worth their salt already have a LINQ interface. As of the time of this writing, I&rsquo;ve written two providers - one based on Fluent NHibernate and one based on MongoDB.</p>
 <p>The unit-of-work factory is where the DB configuration and initialization takes place. All settings are retrieved from the commons library configuration block. You can use multiple providers and give them different names. You can then access each factory using a MEF imported instance of <code>IAppDataAccess</code> which lets you access it like a dictionary with the key being the name you used during configuration.</p>
@@ -67,11 +67,11 @@
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.github.io/tags/architecture/>architecture</a>
+<a href=https://aashishkoirala.com/tags/csharp/>csharp</a> <a href=https://aashishkoirala.com/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.com/tags/architecture/>architecture</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/logging-in-the-commons-library/>Logging in the Commons Library</a>
+<a href=https://aashishkoirala.com/blog/tech/logging-in-the-commons-library/>Logging in the Commons Library</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/providers-for-the-commons-library/>Providers for the Commons Library</a>
+<a href=https://aashishkoirala.com/blog/tech/providers-for-the-commons-library/>Providers for the Commons Library</a>
 </div>
 </div>
 </main>

@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Azure DevOps for CI and CD &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -77,7 +77,7 @@ displayName: 'Publish Build Artifacts'
 </code></pre>
 <p>Things to note here - at first, it was not obvious to me that I need to actually publish the build artifacts for it to be available further down the pipeline. Once I figured that out, though, the built-in task makes this easy. I did have to zip up my folder, though. It&rsquo;s a good idea, anyway, as it&rsquo;s easier than uploading a gazillion files, but I couldn&rsquo;t get it to work without zipping it up. Second, even though I am running the build on a Windows machine, I could just as easily have picked a Linux box since this is .NET Core.</p>
 <p>My release pipeline is pretty simple - there are no multiple stages, and it just comes down to one task - the <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=vsts&tabs=yaml">Azure App Service deploy</a> task.</p>
-<p>I guess the only difference with my other application, <a href=https://aashishkoirala.github.io/blog/tech/listor-showcasing-react-and-dotnet-core/>Listor</a>, is that it is a React based SPA with a .NET Core backend. So the build is a little more involved. I therefore found it easier to just write a custom PowerShell script and call that from the build YAML rather than messing around with it in YAML.</p>
+<p>I guess the only difference with my other application, <a href=https://aashishkoirala.com/blog/tech/listor-showcasing-react-and-dotnet-core/>Listor</a>, is that it is a React based SPA with a .NET Core backend. So the build is a little more involved. I therefore found it easier to just write a custom PowerShell script and call that from the build YAML rather than messing around with it in YAML.</p>
 <pre><code>$ErrorActionPreference = &quot;Stop&quot;
 Push-Location AK.Listor.WebClient
 Write-Host &quot;Installing web client dependencies...&quot;
@@ -144,11 +144,11 @@ displayName: 'Publish Build Artifacts'
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/devops/>devops</a> <a href=https://aashishkoirala.github.io/tags/azure/>azure</a> <a href=https://aashishkoirala.github.io/tags/ci/>ci</a> <a href=https://aashishkoirala.github.io/tags/cd/>cd</a> <a href=https://aashishkoirala.github.io/tags/azuredevops/>azuredevops</a> <a href=https://aashishkoirala.github.io/tags/build/>build</a> <a href=https://aashishkoirala.github.io/tags/release/>release</a> <a href=https://aashishkoirala.github.io/tags/yaml/>yaml</a>
+<a href=https://aashishkoirala.com/tags/devops/>devops</a> <a href=https://aashishkoirala.com/tags/azure/>azure</a> <a href=https://aashishkoirala.com/tags/ci/>ci</a> <a href=https://aashishkoirala.com/tags/cd/>cd</a> <a href=https://aashishkoirala.com/tags/azuredevops/>azuredevops</a> <a href=https://aashishkoirala.com/tags/build/>build</a> <a href=https://aashishkoirala.com/tags/release/>release</a> <a href=https://aashishkoirala.com/tags/yaml/>yaml</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/on-service-fabric-kubernetes-and-docker/>On Service Fabric, Kubernetes and Docker</a>
+<a href=https://aashishkoirala.com/blog/tech/on-service-fabric-kubernetes-and-docker/>On Service Fabric, Kubernetes and Docker</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>Running .NET Core Global Tools Without the SDK</a>
+<a href=https://aashishkoirala.com/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>Running .NET Core Global Tools Without the SDK</a>
 </div>
 </div>
 </main>

@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Moving to Azure PaaS and Service Fabric- Part 1 &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -52,7 +52,7 @@
 <p>This is Part 1 of a two-part blog series:</p>
 <ul>
 <li>Part 1 (this one; Application- Services, Security and UI)</li>
-<li><a href=https://aashishkoirala.github.io/blog/tech/moving-to-azure-paas-and-service-fabric-part-2/>Part 2</a> (Database, Configuration, Logging, Caching, Service Bus, Emails, Tooling, Rollout)</li>
+<li><a href=https://aashishkoirala.com/blog/tech/moving-to-azure-paas-and-service-fabric-part-2/>Part 2</a> (Database, Configuration, Logging, Caching, Service Bus, Emails, Tooling, Rollout)</li>
 </ul>
 <hr>
 <p>It has been an action-packed year at work. We moved our entire platform in one fell swoop from on-premises to <a href=https://azure.microsoft.com/en-us/overview/what-is-paas/>Azure PaaS (Platform as a Service)</a>. Since this was a big re-platforming effort that would incur regression testing across the entire set of applications, we took this opportunity to include a few technology upgrades in the process. All in all, it was a daunting task and took quite a bit of research and preparation before the actual implementation could be done. I think it is worth it to highlight some of the key achievements. The move entailed the following key aspects:</p>
@@ -87,15 +87,15 @@
 <p>With all this in place, we could now take our existing services and without touching a line of business operation code, we could re-target them to run on Service Fabric. Pretty neat. In terms of security, while WS-Fed using WIF was serving us well, we had recognized that it was perhaps a bit too bloated and while it played well with WCF, our implementation of it, which included a homegrown STS based on it, required quite a bit of upkeep. Additionally, at the time there was not enough extension points on the WCF based listeners on Service Fabric.</p>
 <p>All this and a creeping notion that WCF was on its way to becoming a dying technology soon) acted as catalysts for us to make the decision to ditch WCF, WIF and WS-Fed altogether in favor of a lightweight JSON-over-HTTPS based model running on OWIN/Katana with OAuth2 (specifically OpenID Connect) acting as the security protocol of choice. While this involved changes to application hosting, the big chunk of the effort was in rewriting the STS as an OWIN/Katana-based Angular app that used <a href=https://identityserver.io/>IdentityServer</a> to handle OpenID Connect. While OpenID Connect would be the primary protocol, we still had parties that needed to get in via SAML - so we had to build adapters for that as well.</p>
 <p>In terms of the UI, our frontend applications were ASP.NET MVC based with a hodgepodge of jQuery, Knockout here and there, etc. and were lacking in any common unifying pattern. The WIF integration also was a little too tight of a coupling for my liking. Since redoing our frontends on a core SPA driven pattern was always in our wish-list, this was the perfect time to do so since we would have to deal with removing WIF and integrating with our new OAuth2 based STS, and with hosting the frontends on the Service Fabric as well. We opted to go with AngularJS (1.x) as it was the best choice for us <em>at the time</em> (since then, for our newer efforts, we have evaluated the new Angular and React as well with the decision to be made soon). The makers of IdentityServer also provide a OIDC token manager that is built specifically for SPA applications to work with STS applications based on IdentityServer. We just had to build a few core modules and codify our patterns.</p>
-<p>That&rsquo;s quite enough for now. More to come in <a href=https://aashishkoirala.github.io/blog/tech/moving-to-azure-paas-and-service-fabric-part-2/>Part 2</a>.</p>
+<p>That&rsquo;s quite enough for now. More to come in <a href=https://aashishkoirala.com/blog/tech/moving-to-azure-paas-and-service-fabric-part-2/>Part 2</a>.</p>
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/azure/>azure</a> <a href=https://aashishkoirala.github.io/tags/paas/>paas</a> <a href=https://aashishkoirala.github.io/tags/servicefabric/>servicefabric</a>
+<a href=https://aashishkoirala.com/tags/azure/>azure</a> <a href=https://aashishkoirala.com/tags/paas/>paas</a> <a href=https://aashishkoirala.com/tags/servicefabric/>servicefabric</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/the-new-way-forward-for-spas-with-angular-and-react/>The New Way Forward for SPAs with Angular and React</a>
+<a href=https://aashishkoirala.com/blog/tech/the-new-way-forward-for-spas-with-angular-and-react/>The New Way Forward for SPAs with Angular and React</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/moving-to-azure-paas-and-service-fabric-part-2/>Moving to Azure PaaS and Service Fabric- Part 2</a>
+<a href=https://aashishkoirala.com/blog/tech/moving-to-azure-paas-and-service-fabric-part-2/>Moving to Azure PaaS and Service Fabric- Part 2</a>
 </div>
 </div>
 </main>

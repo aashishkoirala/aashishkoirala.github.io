@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Code Generation And Aspect Orientation &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -67,9 +67,9 @@
 <p>Now, aspects as a concept is quite good. To be able to remove cross-cutting stuff from your business logic code is always good. The attribute model in .NET is a very good fit for applying aspects. There are a few issues with what prevails in terms of AOP in .NET though:</p>
 <ul>
 <li><a href=http://www.postsharp.net/>PostSharp</a>: They&rsquo;re pretty popular within the AOP crowd, but I don&rsquo;t like my code messed with post-compilation.</li>
-<li>There are IoC containers that support AOP out of the box, but I don&rsquo;t like to tie myself to any one container just because they support AOP; besides I have been using <a href=https://aashishkoirala.github.io/blog/tech/mef-for-everything/>MEF for everything</a>.</li>
+<li>There are IoC containers that support AOP out of the box, but I don&rsquo;t like to tie myself to any one container just because they support AOP; besides I have been using <a href=https://aashishkoirala.com/blog/tech/mef-for-everything/>MEF for everything</a>.</li>
 <li>MEF does not have AOP support.</li>
-<li>If you peruse through NuGet, there are quite a few AOP libraries out there. If you think about it, though, this is a perfect application for run-time code generation. I already have CodeDOM and Reflection in my toolbox. Why not build it in the spirit of <a href=https://aashishkoirala.github.io/blog/tech/on-rolling-your-own/>rolling my own</a>? I can then build it the way I think makes sense and build it with MEF support in mind.</li>
+<li>If you peruse through NuGet, there are quite a few AOP libraries out there. If you think about it, though, this is a perfect application for run-time code generation. I already have CodeDOM and Reflection in my toolbox. Why not build it in the spirit of <a href=https://aashishkoirala.com/blog/tech/on-rolling-your-own/>rolling my own</a>? I can then build it the way I think makes sense and build it with MEF support in mind.</li>
 </ul>
 <p>To that effect, I ended up writing <strong><a href=http://aashishkoirala.github.io/aspects/>Aspects for .NET</a></strong>. It is a library that provides interfaces that you can implement to build your own aspects which you can then apply to your implementation classes. It provides a mechanism to wrap, at runtime, your implementation with aspects. There is also integrated support for MEF, albeit with some limitations.</p>
 <p>You can visit the <a href=http://aashishkoirala.github.io/aspects/>project page</a> or the <a href=https://github.com/aashishkoirala/aspects>GitHub repo</a> for more detailed documentation, but to summarize, you can &ldquo;wrap&rdquo; a class with aspects at run-time. When you do so, it inspects the contract interface and implementation class using reflection. It uses CodeDOM to generate an on-the-fly implementation of the contract interface, which expects an instance of the implementation to be initialized, and where each member simply calls out to the implementation (i.e. a hollow wrapper). However, in the process, it also inspects the implementation member to see if any aspect attributes are applied and adds code at appropriate places before or after the invocation to execute those aspects. The type that is generated on the fly is cached in memory.</p>
@@ -77,11 +77,11 @@
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.github.io/tags/aop/>aop</a> <a href=https://aashishkoirala.github.io/tags/architecture/>architecture</a> <a href=https://aashishkoirala.github.io/tags/modeling/>modeling</a>
+<a href=https://aashishkoirala.com/tags/csharp/>csharp</a> <a href=https://aashishkoirala.com/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.com/tags/aop/>aop</a> <a href=https://aashishkoirala.com/tags/architecture/>architecture</a> <a href=https://aashishkoirala.com/tags/modeling/>modeling</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/reader-writer-locking-in-dotnet/>Reader Writer Locking In .NET</a>
+<a href=https://aashishkoirala.com/blog/tech/reader-writer-locking-in-dotnet/>Reader Writer Locking In .NET</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/getting-functional-with-perhaps/>Getting Functional With Perhaps</a>
+<a href=https://aashishkoirala.com/blog/tech/getting-functional-with-perhaps/>Getting Functional With Perhaps</a>
 </div>
 </div>
 </main>

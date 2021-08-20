@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Logging in the Commons Library &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -49,18 +49,18 @@
 <div class=post>
 <h1>Logging in the Commons Library</h1>
 <time datetime=2013-08-20T00:00:00Z class=post-date>Tue, Aug 20, 2013</time>
-<p>My major goals when building the logging block for the <a href=https://aashishkoirala.github.io/blog/tech/the-commons-library/>Commons Library</a> were to keep the logging interface simple (just tell me what level, I will give you the message to log - don&rsquo;t make me think too much), be able to log to multiple places (i.e. logging providers), and for the logging operation itself to be asynchronous (i.e. the only latency any logging should add is a memory operation).</p>
+<p>My major goals when building the logging block for the <a href=https://aashishkoirala.com/blog/tech/the-commons-library/>Commons Library</a> were to keep the logging interface simple (just tell me what level, I will give you the message to log - don&rsquo;t make me think too much), be able to log to multiple places (i.e. logging providers), and for the logging operation itself to be asynchronous (i.e. the only latency any logging should add is a memory operation).</p>
 <p>With that, I believe what is now in place meets all of these. You get a MEF imported instance of <code>IAppLogger</code> which has simple <code>Info, Error, Warning, Verbose</code> methods that you can use to log messages or exceptions. Everything you log goes into a queue. When you initialize an application, a log queue thread is started which processes the queue, handles all common logging stuff (i.e. figure out what the configured logging level is and whether this entry should be logged at all based on that, construct a <code>LogEntry</code> object with all the information needed for each individual provider to do its thing, etc.), and dispatches the entry to all configured logging providers.</p>
 <p>All logging providers are sent log entries. So it is up to each logging provider to maintain some sort of an &ldquo;Enabled&rdquo; property that it uses to log or not log. Built in is a console based provider and a very simple text file provider. Possibilities for other providers include one that writes to a database, one that sends it to a web service or WCF endpoint, one that sends it to Azure Table Storage, one that passes it on to another logging provider like log4net or NLog, or maybe one that sends out an e-mail even.</p>
 <p>In any case, I believe for now it meets my needs. Technical details can be found in the Logging section <a href=http://aashishkoirala.github.io/commons/>here</a>. Again, feedback and suggestions for improvement are most welcome.</p>
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.github.io/tags/architecture/>architecture</a>
+<a href=https://aashishkoirala.com/tags/csharp/>csharp</a> <a href=https://aashishkoirala.com/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.com/tags/architecture/>architecture</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/configuration-in-the-commons-library/>Configuration in the Commons Library</a>
+<a href=https://aashishkoirala.com/blog/tech/configuration-in-the-commons-library/>Configuration in the Commons Library</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/data-access-in-the-commons-library/>Data Access in the Commons Library</a>
+<a href=https://aashishkoirala.com/blog/tech/data-access-in-the-commons-library/>Data Access in the Commons Library</a>
 </div>
 </div>
 </main>

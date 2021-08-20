@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Getting Functional With Perhaps &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -51,7 +51,7 @@
 <time datetime=2014-03-04T00:00:00Z class=post-date>Tue, Mar 4, 2014</time>
 <p>Ever since the introduction of LINQ, people have been trying all sorts of clever ways to get more functional constructs into C# to wrap away certain annoying procedural details that are part of the language because of its non-functional beginnings. One of the most annoying class of operations in this context are the <em>TryX</em> methods (e.g. <code>TryGetValue</code>, <code>TryParse</code> and so on) that use <code>out</code> parameters and force you to break into statements what is otherwise a fluent sequence of calls.</p>
 <p>Then there are others, even within LINQ, such as <code>FirstOrDefault</code> that keeps you from choking like <code>First</code> does - but then can&rsquo;t tell the difference between something not being there versus something being there but being null (or the type-default for value types).</p>
-<p>I recently stumbled across two instances of the clever things people do, viz. <a href=https://gist.github.com/bradwilson/9200743>Brad Wilson&rsquo;s <strong>Maybe&lt;T></strong></a> and <a href=http://blogs.msdn.com/b/jaredpar/archive/2008/10/08/functional-c-providing-an-option-part-2.aspx>JaredPar&rsquo;s <strong>Option&lt;T></strong></a>. This inspired me to add some more goodness in and cook up something of my own, aptly named <strong>Perhaps&lt;T></strong>. I am making it part of the <a href=https://aashishkoirala.github.io/blog/tech/the-commons-library/>Commons Library</a>, and you can find the source code here:</p>
+<p>I recently stumbled across two instances of the clever things people do, viz. <a href=https://gist.github.com/bradwilson/9200743>Brad Wilson&rsquo;s <strong>Maybe&lt;T></strong></a> and <a href=http://blogs.msdn.com/b/jaredpar/archive/2008/10/08/functional-c-providing-an-option-part-2.aspx>JaredPar&rsquo;s <strong>Option&lt;T></strong></a>. This inspired me to add some more goodness in and cook up something of my own, aptly named <strong>Perhaps&lt;T></strong>. I am making it part of the <a href=https://aashishkoirala.com/blog/tech/the-commons-library/>Commons Library</a>, and you can find the source code here:</p>
 <ul>
 <li><strong><a href=https://github.com/aashishkoirala/commons/blob/develop/src/AK.Commons/Perhaps.cs>Source code for Perhaps&lt;T></a></strong></li>
 </ul>
@@ -122,11 +122,11 @@ var last = list.PerhapsLast(x =&gt; x.StartsWith(&quot;ABC&quot;));
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.github.io/tags/functional/>functional</a>
+<a href=https://aashishkoirala.com/tags/csharp/>csharp</a> <a href=https://aashishkoirala.com/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.com/tags/functional/>functional</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/code-generation-and-aspect-orientation/>Code Generation And Aspect Orientation</a>
+<a href=https://aashishkoirala.com/blog/tech/code-generation-and-aspect-orientation/>Code Generation And Aspect Orientation</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/conditional-jquery-datepicker-with-angularjs/>Conditional JQuery Datepicker With AngularJS</a>
+<a href=https://aashishkoirala.com/blog/tech/conditional-jquery-datepicker-with-angularjs/>Conditional JQuery Datepicker With AngularJS</a>
 </div>
 </div>
 </main>

@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Installing PFX Certificates in Docker Containers &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -65,7 +65,7 @@ using (var store = new X509Store(storeName, storeLocation, OpenFlags.ReadWrite))
 }
 </code></pre>
 <p><strong>To that end - PFXTOOL</strong></p>
-<p>I ended up writing a <a href=https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools>.NET Core Global Tool</a> that does the above and a bunch more with PFX certificates so that I could use it more easily in containers. <a href=https://pfxtool.aashishkoirala.com/>You can find PFXTool here</a>. I&rsquo;ve tested it on .NET Core Runtime Docker images with both Windows NanoServer and Alpine Linux. The following are sample DOCKERFILEs that I used to test it (I&rsquo;ve included the simpler ones that run on the SDK base images. The Runtime ones are a bit trickier since you need the SDK to install .NET Core Global Tools - <a href=https://aashishkoirala.github.io/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>I&rsquo;ve documented the workaround here</a> - and that is what I did for this tool as well).</p>
+<p>I ended up writing a <a href=https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools>.NET Core Global Tool</a> that does the above and a bunch more with PFX certificates so that I could use it more easily in containers. <a href=https://pfxtool.aashishkoirala.com/>You can find PFXTool here</a>. I&rsquo;ve tested it on .NET Core Runtime Docker images with both Windows NanoServer and Alpine Linux. The following are sample DOCKERFILEs that I used to test it (I&rsquo;ve included the simpler ones that run on the SDK base images. The Runtime ones are a bit trickier since you need the SDK to install .NET Core Global Tools - <a href=https://aashishkoirala.com/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>I&rsquo;ve documented the workaround here</a> - and that is what I did for this tool as well).</p>
 <p><em>Windows</em></p>
 <pre><code>FROM mcr.microsoft.com/dotnet/core/sdk:2.2-nanoserver-1803
 WORKDIR /app
@@ -91,11 +91,11 @@ ENTRYPOINT [&quot;pfxtool&quot;, &quot;list&quot;, &quot;--scope&quot;, &quot;us
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/docker/>docker</a> <a href=https://aashishkoirala.github.io/tags/containers/>containers</a> <a href=https://aashishkoirala.github.io/tags/kubernetes/>kubernetes</a> <a href=https://aashishkoirala.github.io/tags/microservices/>microservices</a> <a href=https://aashishkoirala.github.io/tags/pfx/>pfx</a> <a href=https://aashishkoirala.github.io/tags/certificates/>certificates</a> <a href=https://aashishkoirala.github.io/tags/pkcs12/>pkcs12</a>
+<a href=https://aashishkoirala.com/tags/docker/>docker</a> <a href=https://aashishkoirala.com/tags/containers/>containers</a> <a href=https://aashishkoirala.com/tags/kubernetes/>kubernetes</a> <a href=https://aashishkoirala.com/tags/microservices/>microservices</a> <a href=https://aashishkoirala.com/tags/pfx/>pfx</a> <a href=https://aashishkoirala.com/tags/certificates/>certificates</a> <a href=https://aashishkoirala.com/tags/pkcs12/>pkcs12</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>Running .NET Core Global Tools Without the SDK</a>
+<a href=https://aashishkoirala.com/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>Running .NET Core Global Tools Without the SDK</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/working-with-windows-containers-in-kubernetes/>Working with Windows Containers in Kubernetes</a>
+<a href=https://aashishkoirala.com/blog/tech/working-with-windows-containers-in-kubernetes/>Working with Windows Containers in Kubernetes</a>
 </div>
 </div>
 </main>

@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Configuration in the Commons Library &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -49,7 +49,7 @@
 <div class=post>
 <h1>Configuration in the Commons Library</h1>
 <time datetime=2013-08-15T00:00:00Z class=post-date>Thu, Aug 15, 2013</time>
-<p>When working on the configuration block in the <a href=https://aashishkoirala.github.io/blog/tech/the-commons-library/>Commons Library</a>, I started out wanting to decouple the storage of configuration data and the format of that data from the actual configuration interface used by consumers to retrieve that data. I wanted consumers to be able to simply look up configuration data through a dictionary-style interface while the job of parsing the original format would be done by a configuration formatting provider and the job of getting that data from wherever would be done by a configuration store provider. Eventually, I settled on just following the .NET <code>System.Configuration</code> style XML format- as it is somewhat of a standard now, with a lot of other library builders also using it for their configuration needs. Besides, you diverge from this format and then you have to start rolling your own for tedious things like WCF configuration or diagnostics and tracing configuration - definitely a rat-hole I did not want to go down.</p>
+<p>When working on the configuration block in the <a href=https://aashishkoirala.com/blog/tech/the-commons-library/>Commons Library</a>, I started out wanting to decouple the storage of configuration data and the format of that data from the actual configuration interface used by consumers to retrieve that data. I wanted consumers to be able to simply look up configuration data through a dictionary-style interface while the job of parsing the original format would be done by a configuration formatting provider and the job of getting that data from wherever would be done by a configuration store provider. Eventually, I settled on just following the .NET <code>System.Configuration</code> style XML format- as it is somewhat of a standard now, with a lot of other library builders also using it for their configuration needs. Besides, you diverge from this format and then you have to start rolling your own for tedious things like WCF configuration or diagnostics and tracing configuration - definitely a rat-hole I did not want to go down.</p>
 <p>I was still adamant about being able to break free from <code>Web.config</code> or <code>App.config</code> and get that chunk of XML from anywhere I want. Thus I built it so that it expects an <code>IConfigStore</code> that will give it the XML it needs. The implementation of <code>IConfigStore</code> can then care about where to get it from. I&rsquo;ve put in simple built-in implementations for XML files and HTTP URLs. Other possibilities include databases, a web service, or perhaps Azure Blob Storage.</p>
 <p>Since we can now decouple the configuration data from the application, the other possibility this leads to is being able to store configuration for multiple applications in the same store. In enterprise situations, one runs into this often where you have disparate applications running God knows where, and they all need access to configuration - and that configuration needs to be in sync. You can therefore define multiple application blocks within the configuration XML using my custom configuration section. You can also define a global application block for common settings that can then be overridden by application specific settings.</p>
 <p>I also wanted individual configuration entries to be strongly typed (as opposed to strings in <code>appSettings</code>) - so you can (in fact, you need to) specify the data type of each configuration entry. They can then be retrieved using something like <code>config.Get&lt;string>(...)</code> or <code>config.Get&lt;int>(...)</code> and so forth. This leads to another nice-to-have that is in place- the ability to embed simple serializable objects within the application settings block. You can do this by specifying the type of the object - and then assigning properties or constructor parameters.</p>
@@ -58,11 +58,11 @@
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/csharp/>csharp</a> <a href=https://aashishkoirala.github.io/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.github.io/tags/architecture/>architecture</a>
+<a href=https://aashishkoirala.com/tags/csharp/>csharp</a> <a href=https://aashishkoirala.com/tags/dotnet/>dotnet</a> <a href=https://aashishkoirala.com/tags/architecture/>architecture</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/handling-duplicate-libraries-with-mef/>Handling Duplicate Libraries with MEF</a>
+<a href=https://aashishkoirala.com/blog/tech/handling-duplicate-libraries-with-mef/>Handling Duplicate Libraries with MEF</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/logging-in-the-commons-library/>Logging in the Commons Library</a>
+<a href=https://aashishkoirala.com/blog/tech/logging-in-the-commons-library/>Logging in the Commons Library</a>
 </div>
 </div>
 </main>

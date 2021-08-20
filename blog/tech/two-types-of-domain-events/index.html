@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Two Types of Domain Events &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -54,16 +54,16 @@
 <li>Shouldn&rsquo;t the domain event be dispatched/handled only when the transaction or the unit-of-work commits? Because whatever changes have been made to the state of the domain isn&rsquo;t really permanent until that happens.</li>
 <li>There may be cases when domain events need to trigger changes to other domain objects in the same bounded context - and all of that needs to be persisted transactionally. In other words, in this scenario - it makes sense to have the event be dispatched just before the transaction commits. However, in this case, whatever ends up handling that event also needs access to the current transaction or unit-of-work that is in play - so that all the changes make it to persistence in one fell swoop of a commit.</li>
 </ol>
-<p>That leads me to conclude that there are really two types of domain events that need to be handled differently. The first type as listed above would either be infrastructure-y things like sending out e-mails and such, or sending messages to other bounded contexts or external systems. The second type would be within the same bounded context but maintain certain kinds of relations within the domain that could not be modeled within the same aggregate (simply put, they take the place of database triggers in the <a href=https://aashishkoirala.github.io/blog/tech/getting-on-the-domain-driven-design-bandwagon/>DDD</a> metaphor).</p>
+<p>That leads me to conclude that there are really two types of domain events that need to be handled differently. The first type as listed above would either be infrastructure-y things like sending out e-mails and such, or sending messages to other bounded contexts or external systems. The second type would be within the same bounded context but maintain certain kinds of relations within the domain that could not be modeled within the same aggregate (simply put, they take the place of database triggers in the <a href=https://aashishkoirala.com/blog/tech/getting-on-the-domain-driven-design-bandwagon/>DDD</a> metaphor).</p>
 <p>At this point, I have no further design level ideas on how they would be modeled. More on that later, hopefully. I do know that the thing raising the event should not need to know what kind of domain event it is going to raise. If I am a <strong>Foo</strong> and my <strong>Bar</strong> changes, all I care about is I need to raise a <strong>BarChanged</strong> event. I do not need to know what kind of domain event <strong>BarChanged</strong> is. I will let this percolate a bit.</p>
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/architecture/>architecture</a> <a href=https://aashishkoirala.github.io/tags/domaindrivendesign/>domaindrivendesign</a> <a href=https://aashishkoirala.github.io/tags/ddd/>ddd</a>
+<a href=https://aashishkoirala.com/tags/architecture/>architecture</a> <a href=https://aashishkoirala.com/tags/domaindrivendesign/>domaindrivendesign</a> <a href=https://aashishkoirala.com/tags/ddd/>ddd</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/ddd-meet-soa/>DDD, meet SOA</a>
+<a href=https://aashishkoirala.com/blog/tech/ddd-meet-soa/>DDD, meet SOA</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/diagnosing-mef-composition-errors/>Diagnosing MEF Composition Errors</a>
+<a href=https://aashishkoirala.com/blog/tech/diagnosing-mef-composition-errors/>Diagnosing MEF Composition Errors</a>
 </div>
 </div>
 </main>

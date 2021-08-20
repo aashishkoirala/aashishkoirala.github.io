@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Bye, Bye, TypeScript, for now &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -49,7 +49,7 @@
 <div class=post>
 <h1>Bye, Bye, TypeScript, for now</h1>
 <time datetime=2014-04-15T00:00:00Z class=post-date>Tue, Apr 15, 2014</time>
-<p>As much as I raved about TypeScript in <a href=https://aashishkoirala.github.io/blog/tech/typescript-angularjs-and-bootstrap-the-killer-combo/>this post</a> from some time ago, sadly the time has come for me to part with it - at least for now. It is a beautiful piece of work by a beyond-brilliant group of people. As I worked more and more with JavaScript the past year, though, I realized a few things.</p>
+<p>As much as I raved about TypeScript in <a href=https://aashishkoirala.com/blog/tech/typescript-angularjs-and-bootstrap-the-killer-combo/>this post</a> from some time ago, sadly the time has come for me to part with it - at least for now. It is a beautiful piece of work by a beyond-brilliant group of people. As I worked more and more with JavaScript the past year, though, I realized a few things.</p>
 <p>The first, and this I already mentioned in my previous post, is that it is still maturing and is not quite there yet. One of my pain points was the lack of object initializers that, in my opinion, took away some of the expressiveness of JavaScript. However, as I now look at it, it is the whole idea of trying to hide the fact that everything in JavaScript is a hash-map. Thus, you can and should be able to create an object or assign an object on the fly using JSON notation. As soon as you introduce TypeScript annotations into the mix, this goes away. The best of both worlds here would be if I could have it annotated and still be able to assign or initialize using JSON (and have the JSON be validated based on the annotation).</p>
 <p>The other side to that equation is just the ability to pass tuples around like primitive variables. That is what you get with JSON objects - and while it looks unstructured when looked at from the lens of a more strict language, it is in fact a feature by design. Similar reasoning can be applied to the whole idea of what functions are in JavaScript, how they can define scope, how they can nest, and so on. I am not sure how much having the syntactic sugar of modules and classes helps in that regard.</p>
 <p>Of course, TypeScript is a superset - so you can choose to use TypeScript where you wish and have vanilla JS in other places - but then you end up with this asymmetrical mess that still needs to go through the TypeScript compiler before it can work. I do not like asymmetry.</p>
@@ -59,11 +59,11 @@
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/js/>js</a> <a href=https://aashishkoirala.github.io/tags/javascript/>javascript</a> <a href=https://aashishkoirala.github.io/tags/typescript/>typescript</a>
+<a href=https://aashishkoirala.com/tags/js/>js</a> <a href=https://aashishkoirala.com/tags/javascript/>javascript</a> <a href=https://aashishkoirala.com/tags/typescript/>typescript</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/bootstrap-modal-with-angularjs/>Bootstrap Modal With AngularJS</a>
+<a href=https://aashishkoirala.com/blog/tech/bootstrap-modal-with-angularjs/>Bootstrap Modal With AngularJS</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/an-easy-service-proxy-executor-for-wcf/>An Easy Service Proxy Executor for WCF</a>
+<a href=https://aashishkoirala.com/blog/tech/an-easy-service-proxy-executor-for-wcf/>An Easy Service Proxy Executor for WCF</a>
 </div>
 </div>
 </main>

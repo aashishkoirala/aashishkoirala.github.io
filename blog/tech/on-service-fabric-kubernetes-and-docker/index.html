@@ -13,32 +13,32 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>On Service Fabric, Kubernetes and Docker &#183; Aashish Koirala</title>
 <meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.github.io/css/hyde.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
+<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
 <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.github.io/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.github.io/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.github.io/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.github.io/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.github.io/favicon-safari-pinned-tab.svg color=#5bbad5>
+<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
+<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
+<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
+<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
 </head>
 <body class=theme-base-0d>
 <aside class=sidebar>
 <div class="container sidebar-sticky">
 <div class=sidebar-about>
-<a href=https://aashishkoirala.github.io/>
-<img src=https://aashishkoirala.github.io/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
+<a href=https://aashishkoirala.com/>
+<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
 <h1>aashish<b>koirala</b></h1>
 </a>
 <p class=lead>Software Developer. Overthinker.</p>
 </div>
 <nav>
 <ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.github.io/>Home</a> </li>
+<li><a href=https://aashishkoirala.com/>Home</a> </li>
 <li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
 </ul>
 </nav>
@@ -51,7 +51,7 @@
 <time datetime=2018-10-01T00:00:00Z class=post-date>Mon, Oct 1, 2018</time>
 <blockquote>
 <blockquote>
-<p><strong>UPDATE (Nov 13, 2019)</strong> My views on this have changed since I wrote this post. See <a href=https://aashishkoirala.github.io/blog/tech/revisiting-kubernetes-vs-service-fabric/>this post</a> for where I stand now.</p>
+<p><strong>UPDATE (Nov 13, 2019)</strong> My views on this have changed since I wrote this post. See <a href=https://aashishkoirala.com/blog/tech/revisiting-kubernetes-vs-service-fabric/>this post</a> for where I stand now.</p>
 </blockquote>
 </blockquote>
 <p>Let us get <a href=https://en.wikipedia.org/wiki/Docker_(software)>Docker</a> out of the way first. Microservices and containers are quite the hype these days. With hype comes misinformation and hysteria. A lot of people conflate the two (fortunately there are <a href=https://jimmybogard.com/my-microservices-faq/>wise people out there</a> to set us all straight). If you have done your due diligence and decided to go with microservices, you don&rsquo;t <em>have</em> to go with containers. In fact, one would argue that using containers for production might be a good crutch for applications that have too many tentacles and there is no appetite to port them or rewrite them to be &ldquo;portable&rdquo;. Containers do have <a href=https://jimmybogard.com/containers-what-is-it-good-for/>other good use cases</a> too. Docker being the leading container format (although starting to face some competition from <a href=https://coreos.com/rkt/>rkt</a> these days), all in all I am glad containers exist and I am glad that Docker exists. Just be aware of the fact that what you think you must use may not be what you need at all.</p>
@@ -62,11 +62,11 @@
 <div style=font-size:smaller>
 <br><br>
 Tags:
-<a href=https://aashishkoirala.github.io/tags/servicefabric/>servicefabric</a> <a href=https://aashishkoirala.github.io/tags/azure/>azure</a> <a href=https://aashishkoirala.github.io/tags/kubernetes/>kubernetes</a> <a href=https://aashishkoirala.github.io/tags/docker/>docker</a> <a href=https://aashishkoirala.github.io/tags/microservices/>microservices</a> <a href=https://aashishkoirala.github.io/tags/containers/>containers</a>
+<a href=https://aashishkoirala.com/tags/servicefabric/>servicefabric</a> <a href=https://aashishkoirala.com/tags/azure/>azure</a> <a href=https://aashishkoirala.com/tags/kubernetes/>kubernetes</a> <a href=https://aashishkoirala.com/tags/docker/>docker</a> <a href=https://aashishkoirala.com/tags/microservices/>microservices</a> <a href=https://aashishkoirala.com/tags/containers/>containers</a>
 <br>Previous:
-<a href=https://aashishkoirala.github.io/blog/tech/reader-writer-locking-with-async-await/>Reader-Writer Locking with Async-Await</a>
+<a href=https://aashishkoirala.com/blog/tech/reader-writer-locking-with-async-await/>Reader-Writer Locking with Async-Await</a>
 <br>Next:
-<a href=https://aashishkoirala.github.io/blog/tech/azure-devops-for-ci-and-cd/>Azure DevOps for CI and CD</a>
+<a href=https://aashishkoirala.com/blog/tech/azure-devops-for-ci-and-cd/>Azure DevOps for CI and CD</a>
 </div>
 </div>
 </main>
