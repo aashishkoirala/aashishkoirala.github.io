@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "Aashish Koirala"
 theme = "hyde"
 enableRobotsTXT = true
+googleAnalytics = "G-1VD1W7LBR1"
+disqusShortname = "aashishkoirala"
 
 [menus]
   main = [
@@ -18,3 +20,4 @@ enableRobotsTXT = true
 [params]
   description = "Software Developer. Overthinker."
   themeColor = "theme-base-0d"
+  images = ['logo.png']
