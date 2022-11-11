@@ -1,88 +1,15 @@
-<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
-<head>
-<link href=https://gmpg.org/xfn/11 rel=profile>
-<meta http-equiv=x-ua-compatible content="chrome=1">
-<meta charset=utf-8>
-<meta name=robots content="index,follow">
-<meta name=apple-mobile-web-app-title content="Aashish Koirala">
-<meta name=application-name content="Aashish Koirala">
-<meta name=msapplication-TileColor content="#00aba9">
-<meta name=theme-color content="#ffffff">
-<meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Automatic Resource Management in C# &#183; Aashish Koirala</title>
-<meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
-<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
-<meta property="og:title" content="Automatic Resource Management in C#">
-<meta property="og:description" content="Both the .NET framework and Java are garbage-collected systems. This means that when you instantiate objects, the framework keeps track of how the object is being referenced, and automatically frees up memory used by the object when it is no longer referenced by anything and is “out of scope”. This works beautifully with objects that are part of the framework. In .NET lingo, these are called “managed resources”. However, a lot of times, a .">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://aashishkoirala.com/blog/tech/automatic-resource-management-in-csharp/"><meta property="og:image" content="https://aashishkoirala.com/logo.png"><meta property="article:section" content="blog">
-<meta property="article:published_time" content="2012-02-27T00:00:00+00:00">
-<meta property="article:modified_time" content="2012-02-27T00:00:00+00:00">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://aashishkoirala.com/logo.png">
-<meta name=twitter:title content="Automatic Resource Management in C#">
-<meta name=twitter:description content="Both the .NET framework and Java are garbage-collected systems. This means that when you instantiate objects, the framework keeps track of how the object is being referenced, and automatically frees up memory used by the object when it is no longer referenced by anything and is “out of scope”. This works beautifully with objects that are part of the framework. In .NET lingo, these are called “managed resources”. However, a lot of times, a .">
-</head>
-<body class=theme-base-0d>
-<aside class=sidebar>
-<div class="container sidebar-sticky">
-<div class=sidebar-about>
-<a href=https://aashishkoirala.com/>
-<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
-<h1>aashish<b>koirala</b></h1>
-</a>
-<p class=lead>Software Developer. Overthinker.</p>
-</div>
-<nav>
-<ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.com/>Home</a> </li>
-<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
-</ul>
-</nav>
-<p>&copy; 2021. All rights reserved. </p>
-</div>
-</aside>
-<main class="content container">
-<div class=post>
-<h1>Automatic Resource Management in C#</h1>
-<time datetime=2012-02-27T00:00:00Z class=post-date>Mon, Feb 27, 2012</time>
-<p>Both the .NET framework and Java are garbage-collected systems. This means that when you instantiate objects, the framework keeps track of how the object is being referenced, and automatically frees up memory used by the object when it is no longer referenced by anything and is “out of scope”. This works beautifully with objects that are part of the framework. In .NET lingo, these are called “managed resources”. However, a lot of times, a .NET or Java application needs to talk to other systems external to the framework – such as databases, file systems, network sockets, graphics engines, and so on – i.e. “unmanaged resources”. In such cases, it is up to the programmer to handle allocation and de-allocation of resources. Framework classes that provide access to such resources will usually provide routines to close or dispose of resources. However, the programmer still needs to write boilerplate in order to do it and the boilerplate usually becomes cumbersome when you take into account things like exception handling.</p>
-<p>The .NET framework provided an answer to this problem with the introduction of the using keyword for resource management in .NET 3.5. A similar mechanism has since been introduced in Java 7. This text focuses on the .NET implementation, particularly C#, and then follows that up with an example from Java as well.</p>
-<h4 id=the-idisposable-interface-in-c>The IDisposable Interface in C#</h4>
-<p>This has been around since before .NET 3.5. Classes that provide access to unmanaged resources are recommended to implement the System.IDisposable interface:</p>
-<pre><code>public interface IDisposable
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta http-equiv=x-ua-compatible content="chrome=1"><meta charset=utf-8><meta name=robots content="index,follow"><meta name=apple-mobile-web-app-title content="Aashish Koirala"><meta name=application-name content="Aashish Koirala"><meta name=msapplication-TileColor content="#00aba9"><meta name=theme-color content="#ffffff"><meta charset=utf-8><meta name=generator content="Hugo 0.105.0"><meta name=viewport content="width=device-width,initial-scale=1"><title>Automatic Resource Management in C# &#183; Aashish Koirala</title><meta name=description content><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700"><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png><link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png><link rel=manifest href=https://aashishkoirala.com/site.webmanifest><link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5><meta property="og:title" content="Automatic Resource Management in C#"><meta property="og:description" content="Both the .NET framework and Java are garbage-collected systems. This means that when you instantiate objects, the framework keeps track of how the object is being referenced, and automatically frees up memory used by the object when it is no longer referenced by anything and is “out of scope”. This works beautifully with objects that are part of the framework. In .NET lingo, these are called “managed resources”. However, a lot of times, a ."><meta property="og:type" content="article"><meta property="og:url" content="https://aashishkoirala.com/blog/tech/automatic-resource-management-in-csharp/"><meta property="og:image" content="https://aashishkoirala.com/logo.png"><meta property="article:section" content="blog"><meta property="article:published_time" content="2012-02-27T00:00:00+00:00"><meta property="article:modified_time" content="2012-02-27T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://aashishkoirala.com/logo.png"><meta name=twitter:title content="Automatic Resource Management in C#"><meta name=twitter:description content="Both the .NET framework and Java are garbage-collected systems. This means that when you instantiate objects, the framework keeps track of how the object is being referenced, and automatically frees up memory used by the object when it is no longer referenced by anything and is “out of scope”. This works beautifully with objects that are part of the framework. In .NET lingo, these are called “managed resources”. However, a lot of times, a ."></head><body class=theme-base-0d><aside class=sidebar><div class="container sidebar-sticky"><div class=sidebar-about><a href=https://aashishkoirala.com/><img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker."><h1>aashish<b>koirala</b></h1></a><p class=lead>Software Developer. Overthinker.</p></div><nav><ul class=sidebar-nav><li><a href=https://aashishkoirala.com/>Home</a></li><li><a href=/about>About Me</a></li><li><a href=https://github.com/aashishkoirala/>Github</a></li><li><a href=https://twitter.com/aashishkoirala/>Twitter</a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/>LinkedIn</a></li><li><a href=/blog/tech>Blog Posts - Tech</a></li><li><a href=/blog/nontech>Blog Posts - Non-Tech</a></li><li><a href=/index.xml>Subscribe (RSS)</a></li></ul></nav><p>&copy; 2022. All rights reserved.</p></div></aside><main class="content container"><div class=post><h1>Automatic Resource Management in C#</h1><time datetime=2012-02-27T00:00:00Z class=post-date>Mon, Feb 27, 2012</time><p>Both the .NET framework and Java are garbage-collected systems. This means that when you instantiate objects, the framework keeps track of how the object is being referenced, and automatically frees up memory used by the object when it is no longer referenced by anything and is “out of scope”. This works beautifully with objects that are part of the framework. In .NET lingo, these are called “managed resources”. However, a lot of times, a .NET or Java application needs to talk to other systems external to the framework – such as databases, file systems, network sockets, graphics engines, and so on – i.e. “unmanaged resources”. In such cases, it is up to the programmer to handle allocation and de-allocation of resources. Framework classes that provide access to such resources will usually provide routines to close or dispose of resources. However, the programmer still needs to write boilerplate in order to do it and the boilerplate usually becomes cumbersome when you take into account things like exception handling.</p><p>The .NET framework provided an answer to this problem with the introduction of the using keyword for resource management in .NET 3.5. A similar mechanism has since been introduced in Java 7. This text focuses on the .NET implementation, particularly C#, and then follows that up with an example from Java as well.</p><h4 id=the-idisposable-interface-in-c>The IDisposable Interface in C#</h4><p>This has been around since before .NET 3.5. Classes that provide access to unmanaged resources are recommended to implement the System.IDisposable interface:</p><pre><code>public interface IDisposable
 {
     void Dispose();
 }
-</code></pre>
-<p>In the implementation of the Dispose method, the class author needs to write code that will free up all unmanaged resources instantiated by the class during its life cycle. Furthermore, there is a specific pattern that should be followed when working with this interface. The pattern is outlined in detail in <a href=http://msdn.microsoft.com/en-us/library/system.idisposable.aspx>MSDN</a>.</p>
-<p>All framework classes that access unmanaged resources (such as I/O classes and database connection APIs) implement this interface and follow the recommended pattern.</p>
-<h4 id=the-boilerplate-problem>The Boilerplate Problem</h4>
-<p>Consider a class <code>MyDisposable</code> that accesses unmanaged resources and implements <code>IDisposable</code>. A typical usage scenario would look something like this:</p>
-<pre><code>...
+</code></pre><p>In the implementation of the Dispose method, the class author needs to write code that will free up all unmanaged resources instantiated by the class during its life cycle. Furthermore, there is a specific pattern that should be followed when working with this interface. The pattern is outlined in detail in <a href=http://msdn.microsoft.com/en-us/library/system.idisposable.aspx>MSDN</a>.</p><p>All framework classes that access unmanaged resources (such as I/O classes and database connection APIs) implement this interface and follow the recommended pattern.</p><h4 id=the-boilerplate-problem>The Boilerplate Problem</h4><p>Consider a class <code>MyDisposable</code> that accesses unmanaged resources and implements <code>IDisposable</code>. A typical usage scenario would look something like this:</p><pre><code>...
 MyDisposable d = new MyDisposable();
 ...
 d.SomeMethod();
 ...
 d.Dispose();
 ...
-</code></pre>
-<p>However, there is no guarantee here that the call to <code>Dispose</code> will be executed. There may be branches that return from the method. There may be errors that are uncaught. In such cases, this will lead to resources not being freed and lead to memory creep.</p>
-<p>For error-handling, this calls for something along the lines of:</p>
-<pre><code>MyDisposable d = new MyDisposable();
+</code></pre><p>However, there is no guarantee here that the call to <code>Dispose</code> will be executed. There may be branches that return from the method. There may be errors that are uncaught. In such cases, this will lead to resources not being freed and lead to memory creep.</p><p>For error-handling, this calls for something along the lines of:</p><pre><code>MyDisposable d = new MyDisposable();
 try
 {
     ...
@@ -102,45 +29,19 @@ finally
     d.Dispose();
 }
 ...
-</code></pre>
-<p>If there are multiple exit-points in the method, then the programmer needs to make sure that <code>Dispose</code> is called before each of those points are reached. Alternatively, the programmer would need to structure the whole routine so that the method has only one exit-point. In any case, this leads to a lot of plumbing that the programmer needs to do and almost defeats the purpose of having a garbage-collected system when working with unmanaged resources.</p>
-<h4 id=the-answer--the-using-keyword-for-use-with-idisposable>The Answer – The using Keyword for Use with IDisposable</h4>
-<p>Starting with C# 3.5, the above construct can be written as follows:</p>
-<pre><code>using(MyDisposable d = new MyDisposable())
+</code></pre><p>If there are multiple exit-points in the method, then the programmer needs to make sure that <code>Dispose</code> is called before each of those points are reached. Alternatively, the programmer would need to structure the whole routine so that the method has only one exit-point. In any case, this leads to a lot of plumbing that the programmer needs to do and almost defeats the purpose of having a garbage-collected system when working with unmanaged resources.</p><h4 id=the-answer--the-using-keyword-for-use-with-idisposable>The Answer – The using Keyword for Use with IDisposable</h4><p>Starting with C# 3.5, the above construct can be written as follows:</p><pre><code>using(MyDisposable d = new MyDisposable())
 {
     ...
     d.SomeMethod();
     ...
 }
-</code></pre>
-<p>Any class that implements <code>IDisposable</code> can be used in the above fashion. When used this way, as soon as the flow of control exits the using block, the <code>Dispose</code> method is called without doubt. Even if there is an uncaught error that causes the block to be exited out of, the <code>Dispose</code> method will be called. This makes for a cleaner, more concise, more maintainable and safer code in terms of resource usage.</p>
-<p>Starting with .NET 3.5, therefore, it is best practice to use the above pattern when dealing with unmanaged resources.</p>
-<h4 id=arm-in-java-7>ARM in Java 7</h4>
-<p>With Java 7, something similar has been introduced where you can use the try keyword with classes that implement the java.lang.AutoCloseable interface, for example:</p>
-<pre><code>try(MyCloseable c = new MyCloseable()) {
+</code></pre><p>Any class that implements <code>IDisposable</code> can be used in the above fashion. When used this way, as soon as the flow of control exits the using block, the <code>Dispose</code> method is called without doubt. Even if there is an uncaught error that causes the block to be exited out of, the <code>Dispose</code> method will be called. This makes for a cleaner, more concise, more maintainable and safer code in terms of resource usage.</p><p>Starting with .NET 3.5, therefore, it is best practice to use the above pattern when dealing with unmanaged resources.</p><h4 id=arm-in-java-7>ARM in Java 7</h4><p>With Java 7, something similar has been introduced where you can use the try keyword with classes that implement the java.lang.AutoCloseable interface, for example:</p><pre><code>try(MyCloseable c = new MyCloseable()) {
     ...
     c.someMethod();
     ...
 }
-</code></pre>
-<p>Hopefully, with Java 7, this will free Java developers from having to write a lot of painful boilerplate and finally blocks for resource management. This is a good example of the .NET and Java communities learning from and feeding into each other.</p>
-<div style=font-size:smaller>
-<br><br>
-Tags:
-<a href=https://aashishkoirala.com/tags/csharp/>csharp</a> <a href=https://aashishkoirala.com/tags/dotnet/>dotnet</a>
-<br>Previous:
-<a href=https://aashishkoirala.com/blog/tech/pass-summit-2011-notes/>PASS Summit 2011 Notes</a>
-<br>Next:
-<a href=https://aashishkoirala.com/blog/tech/introduction-to-nodejs/>Introduction to NodeJS</a>
-</div>
-</div>
-<h2>Comments</h2>
-<div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//aashishkoirala.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-</main>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VD1W7LBR1"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-1VD1W7LBR1',{anonymize_ip:!1})}</script>
-</body>
-</html>
+</code></pre><p>Hopefully, with Java 7, this will free Java developers from having to write a lot of painful boilerplate and finally blocks for resource management. This is a good example of the .NET and Java communities learning from and feeding into each other.</p><div style=font-size:smaller><br><br>Tags:
+<a href=https://aashishkoirala.com/tags/csharp/>csharp</a> <a href=https://aashishkoirala.com/tags/dotnet/>dotnet</a><br>Previous:
+<a href=https://aashishkoirala.com/blog/tech/pass-summit-2011-notes/>PASS Summit 2011 Notes</a><br>Next:
+<a href=https://aashishkoirala.com/blog/tech/introduction-to-nodejs/>Introduction to NodeJS</a></div></div><h2>Comments</h2><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//aashishkoirala.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></main><script async src="https://www.googletagmanager.com/gtag/js?id=G-1VD1W7LBR1"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-1VD1W7LBR1",{anonymize_ip:!1})}</script></body></html>

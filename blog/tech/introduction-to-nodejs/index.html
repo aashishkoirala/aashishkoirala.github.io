@@ -1,81 +1,8 @@
-<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
-<head>
-<link href=https://gmpg.org/xfn/11 rel=profile>
-<meta http-equiv=x-ua-compatible content="chrome=1">
-<meta charset=utf-8>
-<meta name=robots content="index,follow">
-<meta name=apple-mobile-web-app-title content="Aashish Koirala">
-<meta name=application-name content="Aashish Koirala">
-<meta name=msapplication-TileColor content="#00aba9">
-<meta name=theme-color content="#ffffff">
-<meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Introduction to NodeJS &#183; Aashish Koirala</title>
-<meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
-<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
-<meta property="og:title" content="Introduction to NodeJS">
-<meta property="og:description" content="I just ran into some presentation material from a Node.js introduction presentation I had done in a session that shall remain unnamed. I thought it would be a good idea to put it out there in case someone is starting out with Node, should they stumble on here. So, here it is.
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta http-equiv=x-ua-compatible content="chrome=1"><meta charset=utf-8><meta name=robots content="index,follow"><meta name=apple-mobile-web-app-title content="Aashish Koirala"><meta name=application-name content="Aashish Koirala"><meta name=msapplication-TileColor content="#00aba9"><meta name=theme-color content="#ffffff"><meta charset=utf-8><meta name=generator content="Hugo 0.105.0"><meta name=viewport content="width=device-width,initial-scale=1"><title>Introduction to NodeJS &#183; Aashish Koirala</title><meta name=description content><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700"><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png><link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png><link rel=manifest href=https://aashishkoirala.com/site.webmanifest><link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5><meta property="og:title" content="Introduction to NodeJS"><meta property="og:description" content="I just ran into some presentation material from a Node.js introduction presentation I had done in a session that shall remain unnamed. I thought it would be a good idea to put it out there in case someone is starting out with Node, should they stumble on here. So, here it is.
 To quote Wikipedia:
- A software system designed for writing scalable internet applications, notably web servers. Programs are written in JavaScript, using event-driven, asynchronous I/O to minimize overhead and maximize scalability.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://aashishkoirala.com/blog/tech/introduction-to-nodejs/"><meta property="og:image" content="https://aashishkoirala.com/logo.png"><meta property="article:section" content="blog">
-<meta property="article:published_time" content="2012-04-12T00:00:00+00:00">
-<meta property="article:modified_time" content="2012-04-12T00:00:00+00:00">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://aashishkoirala.com/logo.png">
-<meta name=twitter:title content="Introduction to NodeJS">
-<meta name=twitter:description content="I just ran into some presentation material from a Node.js introduction presentation I had done in a session that shall remain unnamed. I thought it would be a good idea to put it out there in case someone is starting out with Node, should they stumble on here. So, here it is.
+A software system designed for writing scalable internet applications, notably web servers. Programs are written in JavaScript, using event-driven, asynchronous I/O to minimize overhead and maximize scalability."><meta property="og:type" content="article"><meta property="og:url" content="https://aashishkoirala.com/blog/tech/introduction-to-nodejs/"><meta property="og:image" content="https://aashishkoirala.com/logo.png"><meta property="article:section" content="blog"><meta property="article:published_time" content="2012-04-12T00:00:00+00:00"><meta property="article:modified_time" content="2012-04-12T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://aashishkoirala.com/logo.png"><meta name=twitter:title content="Introduction to NodeJS"><meta name=twitter:description content="I just ran into some presentation material from a Node.js introduction presentation I had done in a session that shall remain unnamed. I thought it would be a good idea to put it out there in case someone is starting out with Node, should they stumble on here. So, here it is.
 To quote Wikipedia:
- A software system designed for writing scalable internet applications, notably web servers. Programs are written in JavaScript, using event-driven, asynchronous I/O to minimize overhead and maximize scalability.">
-</head>
-<body class=theme-base-0d>
-<aside class=sidebar>
-<div class="container sidebar-sticky">
-<div class=sidebar-about>
-<a href=https://aashishkoirala.com/>
-<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
-<h1>aashish<b>koirala</b></h1>
-</a>
-<p class=lead>Software Developer. Overthinker.</p>
-</div>
-<nav>
-<ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.com/>Home</a> </li>
-<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
-</ul>
-</nav>
-<p>&copy; 2021. All rights reserved. </p>
-</div>
-</aside>
-<main class="content container">
-<div class=post>
-<h1>Introduction to NodeJS</h1>
-<time datetime=2012-04-12T00:00:00Z class=post-date>Thu, Apr 12, 2012</time>
-<p>I just ran into some presentation material from a Node.js introduction presentation I had done in a session that shall remain unnamed. I thought it would be a good idea to put it out there in case someone is starting out with Node, should they stumble on here. So, here it is.</p>
-<p>To quote <a href=http://en.wikipedia.org/wiki/Nodejs>Wikipedia</a>:</p>
-<ul>
-<li>A software system designed for writing scalable internet applications, notably web servers.</li>
-<li>Programs are written in JavaScript, using event-driven, asynchronous I/O to minimize overhead and maximize scalability.</li>
-<li>Consists of Google&rsquo;s V8 JavaScript engine plus several built-in libraries.</li>
-<li>Created by Ryan Dahl starting in 2009; growth sponsored by Joyent, his employer.</li>
-</ul>
-<p>The V8 JavaScript Engine is part of why Chrome is so fast. It compiles JavaScript to native code. It has a &ldquo;stop-the-world&rdquo; garbage collector that makes it more suitable for non-interactive applications. In Dahl&rsquo;s words, V8 is a &ldquo;beast&rdquo; with all sorts of features (such as debugging). Node.js is a JavaScript library (compare to JRE or .NET framework) on top of the V8 JS Engine (compare to JVM or .NET CLR).</p>
-<p>Traditionally, the way synchronous programming works is that you call a function, wait for its result, call the next function, wait for that result, and so on. To do multiple things at once, you need to spawn multiple threads. Each thread is either itself synchronous or spawns more threads as required.</p>
-<p>With asynchronous programming - which is what Node.js follows, you call a function, but instead of waiting, pass another function (“callback”) as a parameter (also known as the <em>continuation passing</em> pattern). The callback function is executed by the function being called when it’s done. The callback function can itself take another callback function as a parameter, and so on.</p>
-<p>Asynchronous programming is easier in languages that support closures, and JavaScript happens to be one of them. A simple example:</p>
-<pre><code>var a = 1, b = 2;
+A software system designed for writing scalable internet applications, notably web servers. Programs are written in JavaScript, using event-driven, asynchronous I/O to minimize overhead and maximize scalability."></head><body class=theme-base-0d><aside class=sidebar><div class="container sidebar-sticky"><div class=sidebar-about><a href=https://aashishkoirala.com/><img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker."><h1>aashish<b>koirala</b></h1></a><p class=lead>Software Developer. Overthinker.</p></div><nav><ul class=sidebar-nav><li><a href=https://aashishkoirala.com/>Home</a></li><li><a href=/about>About Me</a></li><li><a href=https://github.com/aashishkoirala/>Github</a></li><li><a href=https://twitter.com/aashishkoirala/>Twitter</a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/>LinkedIn</a></li><li><a href=/blog/tech>Blog Posts - Tech</a></li><li><a href=/blog/nontech>Blog Posts - Non-Tech</a></li><li><a href=/index.xml>Subscribe (RSS)</a></li></ul></nav><p>&copy; 2022. All rights reserved.</p></div></aside><main class="content container"><div class=post><h1>Introduction to NodeJS</h1><time datetime=2012-04-12T00:00:00Z class=post-date>Thu, Apr 12, 2012</time><p>I just ran into some presentation material from a Node.js introduction presentation I had done in a session that shall remain unnamed. I thought it would be a good idea to put it out there in case someone is starting out with Node, should they stumble on here. So, here it is.</p><p>To quote <a href=http://en.wikipedia.org/wiki/Nodejs>Wikipedia</a>:</p><ul><li>A software system designed for writing scalable internet applications, notably web servers.</li><li>Programs are written in JavaScript, using event-driven, asynchronous I/O to minimize overhead and maximize scalability.</li><li>Consists of Google&rsquo;s V8 JavaScript engine plus several built-in libraries.</li><li>Created by Ryan Dahl starting in 2009; growth sponsored by Joyent, his employer.</li></ul><p>The V8 JavaScript Engine is part of why Chrome is so fast. It compiles JavaScript to native code. It has a &ldquo;stop-the-world&rdquo; garbage collector that makes it more suitable for non-interactive applications. In Dahl&rsquo;s words, V8 is a &ldquo;beast&rdquo; with all sorts of features (such as debugging). Node.js is a JavaScript library (compare to JRE or .NET framework) on top of the V8 JS Engine (compare to JVM or .NET CLR).</p><p>Traditionally, the way synchronous programming works is that you call a function, wait for its result, call the next function, wait for that result, and so on. To do multiple things at once, you need to spawn multiple threads. Each thread is either itself synchronous or spawns more threads as required.</p><p>With asynchronous programming - which is what Node.js follows, you call a function, but instead of waiting, pass another function (“callback”) as a parameter (also known as the <em>continuation passing</em> pattern). The callback function is executed by the function being called when it’s done. The callback function can itself take another callback function as a parameter, and so on.</p><p>Asynchronous programming is easier in languages that support closures, and JavaScript happens to be one of them. A simple example:</p><pre><code>var a = 1, b = 2;
 
 function firstFunction(a, b, cb) {
     cb(a + b);
@@ -84,29 +11,20 @@ function firstFunction(a, b, cb) {
 firstFunction(a, b, function(c) {
     console.log(c);
 });
-</code></pre>
-<p>A Node.js application is a bunch of JavaScript (.js) files. The application is launched using the node executable:</p>
-<pre><code>node entry-point-js-file
-</code></pre>
-<p>The process knows by itself when to exit.</p>
-<p>Here&rsquo;s a simple &ldquo;Hello, world&rdquo; example:</p>
-<pre><code>setTimeout(function() {
+</code></pre><p>A Node.js application is a bunch of JavaScript (.js) files. The application is launched using the node executable:</p><pre><code>node entry-point-js-file
+</code></pre><p>The process knows by itself when to exit.</p><p>Here&rsquo;s a simple &ldquo;Hello, world&rdquo; example:</p><pre><code>setTimeout(function() {
 	console.log(&quot;Here comes the chicken!&quot;);
 }, 2000);
 
 console.log(&quot;Here comes the egg!&quot;);
-</code></pre>
-<p>Here&rsquo;s a simple web server:</p>
-<pre><code>require('http').createServer(function(req, res) {
+</code></pre><p>Here&rsquo;s a simple web server:</p><pre><code>require('http').createServer(function(req, res) {
 	res.writeHead(200, { 'Content-Type' : 'text/plain' });
 	res.write(&quot;Here comes the egg!&quot;);
 	setTimeout(function() {
-        res.end(&quot;Here comes the chicken!&quot;);
+		res.end(&quot;Here comes the chicken!&quot;);
 	}, 2000);
 }).listen(8000);
-</code></pre>
-<p>A little more dynamic:</p>
-<pre><code>require('http').createServer(function(req, res) {
+</code></pre><p>A little more dynamic:</p><pre><code>require('http').createServer(function(req, res) {
 	res.writeHead(200, { 'Content-Type' : 'text/plain' });
 	getValueFromDB(req, res, getValueFromWebService);
 }).listen(8000);
@@ -119,28 +37,18 @@ function getValueFromDB(req, res, cb) {
 
 function getValueFromWebService(input, res) {
 	console.log(&quot;Getting value from web service &quot; +
-        &quot;based on value from db = &quot; + input + &quot;...&quot;);
+		&quot;based on value from db = &quot; + input + &quot;...&quot;);
 	var value = input * 2; // Get from WS in real life
 	res.end(value.toString());
 }
-</code></pre>
-<p>If we take an unusual use case to demonstrate the power of asynchronous programming, consider we need an application that needs to:</p>
-<ul>
-<li>Do Thing 1 every 5 seconds</li>
-<li>Do Thing 2 every 2 seconds</li>
-<li>Do Thing 3 every 30 seconds</li>
-<li>Be a web server</li>
-<li>Also be a TCP server</li>
-</ul>
-<p>Then, here&rsquo;s the Node.js solution:</p>
-<pre><code>require('http').createServer(function(req, res) {
+</code></pre><p>If we take an unusual use case to demonstrate the power of asynchronous programming, consider we need an application that needs to:</p><ul><li>Do Thing 1 every 5 seconds</li><li>Do Thing 2 every 2 seconds</li><li>Do Thing 3 every 30 seconds</li><li>Be a web server</li><li>Also be a TCP server</li></ul><p>Then, here&rsquo;s the Node.js solution:</p><pre><code>require('http').createServer(function(req, res) {
 	res.writeHead(200, { 'Content-Type' : 'text/plain' });
 	res.end(JSON.stringify(req.headers));
 }).listen(8000);
 
 require('net').createServer(function(socket) {
 	socket.on('data', function() {
-        socket.write('Hey!');
+		socket.write('Hey!');
 	});
 }).listen(7000);
 
@@ -155,25 +63,8 @@ setInterval(function() {
 setInterval(function() {
 	console.log(&quot;Doing thing 3...&quot;);
 }, 30000);
-</code></pre>
-<p>There you go, Node.js - oversimplified and in a nutshell.</p>
-<div style=font-size:smaller>
-<br><br>
-Tags:
-<a href=https://aashishkoirala.com/tags/node/>node</a> <a href=https://aashishkoirala.com/tags/nodejs/>nodejs</a> <a href=https://aashishkoirala.com/tags/js/>js</a> <a href=https://aashishkoirala.com/tags/javascript/>javascript</a>
-<br>Previous:
-<a href=https://aashishkoirala.com/blog/tech/automatic-resource-management-in-csharp/>Automatic Resource Management in C#</a>
-<br>Next:
-<a href=https://aashishkoirala.com/blog/tech/the-commons-library/>The Commons Library</a>
-</div>
-</div>
-<h2>Comments</h2>
-<div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//aashishkoirala.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-</main>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VD1W7LBR1"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-1VD1W7LBR1',{anonymize_ip:!1})}</script>
-</body>
-</html>
+</code></pre><p>There you go, Node.js - oversimplified and in a nutshell.</p><div style=font-size:smaller><br><br>Tags:
+<a href=https://aashishkoirala.com/tags/node/>node</a> <a href=https://aashishkoirala.com/tags/nodejs/>nodejs</a> <a href=https://aashishkoirala.com/tags/js/>js</a> <a href=https://aashishkoirala.com/tags/javascript/>javascript</a><br>Previous:
+<a href=https://aashishkoirala.com/blog/tech/automatic-resource-management-in-csharp/>Automatic Resource Management in C#</a><br>Next:
+<a href=https://aashishkoirala.com/blog/tech/the-commons-library/>The Commons Library</a></div></div><h2>Comments</h2><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//aashishkoirala.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></main><script async src="https://www.googletagmanager.com/gtag/js?id=G-1VD1W7LBR1"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-1VD1W7LBR1",{anonymize_ip:!1})}</script></body></html>

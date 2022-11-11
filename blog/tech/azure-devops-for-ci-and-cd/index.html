@@ -1,67 +1,4 @@
-<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us>
-<head>
-<link href=https://gmpg.org/xfn/11 rel=profile>
-<meta http-equiv=x-ua-compatible content="chrome=1">
-<meta charset=utf-8>
-<meta name=robots content="index,follow">
-<meta name=apple-mobile-web-app-title content="Aashish Koirala">
-<meta name=application-name content="Aashish Koirala">
-<meta name=msapplication-TileColor content="#00aba9">
-<meta name=theme-color content="#ffffff">
-<meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>Azure DevOps for CI and CD &#183; Aashish Koirala</title>
-<meta name=description content>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css>
-<link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css>
-<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-<link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png>
-<link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png>
-<link rel=manifest href=https://aashishkoirala.com/site.webmanifest>
-<link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5>
-<meta property="og:title" content="Azure DevOps for CI and CD">
-<meta property="og:description" content="I set up CI and CD for two of my applications using Azure DevOps. It was quite easy. Setting up the build pipeline is as simple as including a YAML file in your source repository. It then just comes down to knowing how the build YAML schema works. As far as the release (or deployment) pipeline is concerned, though, I could not find a similar method. I had to set it up through the Azure DevOps UI.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://aashishkoirala.com/blog/tech/azure-devops-for-ci-and-cd/"><meta property="og:image" content="https://aashishkoirala.com/logo.png"><meta property="article:section" content="blog">
-<meta property="article:published_time" content="2018-11-01T00:00:00+00:00">
-<meta property="article:modified_time" content="2018-11-01T00:00:00+00:00">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://aashishkoirala.com/logo.png">
-<meta name=twitter:title content="Azure DevOps for CI and CD">
-<meta name=twitter:description content="I set up CI and CD for two of my applications using Azure DevOps. It was quite easy. Setting up the build pipeline is as simple as including a YAML file in your source repository. It then just comes down to knowing how the build YAML schema works. As far as the release (or deployment) pipeline is concerned, though, I could not find a similar method. I had to set it up through the Azure DevOps UI.">
-</head>
-<body class=theme-base-0d>
-<aside class=sidebar>
-<div class="container sidebar-sticky">
-<div class=sidebar-about>
-<a href=https://aashishkoirala.com/>
-<img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker.">
-<h1>aashish<b>koirala</b></h1>
-</a>
-<p class=lead>Software Developer. Overthinker.</p>
-</div>
-<nav>
-<ul class=sidebar-nav>
-<li><a href=https://aashishkoirala.com/>Home</a> </li>
-<li><a href=/about> About Me </a></li><li><a href=https://github.com/aashishkoirala/> Github </a></li><li><a href=https://twitter.com/aashishkoirala/> Twitter </a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/> LinkedIn </a></li><li><a href=/blog/tech> Blog Posts - Tech </a></li><li><a href=/blog/nontech> Blog Posts - Non-Tech </a></li><li><a href=/index.xml> Subscribe (RSS) </a></li>
-</ul>
-</nav>
-<p>&copy; 2021. All rights reserved. </p>
-</div>
-</aside>
-<main class="content container">
-<div class=post>
-<h1>Azure DevOps for CI and CD</h1>
-<time datetime=2018-11-01T00:00:00Z class=post-date>Thu, Nov 1, 2018</time>
-<p>I set up CI and CD for two of my applications using <a href=https://azure.microsoft.com/en-us/services/devops/>Azure DevOps</a>. It was quite easy. Setting up the build pipeline is as simple as including a YAML file in your source repository. It then just comes down to knowing <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema">how the build YAML schema works</a>. As far as the release (or deployment) pipeline is concerned, though, I could not find a similar method. I had to set it up through the Azure DevOps UI. I don&rsquo;t know if there is some information I am missing, but that would seem to somewhat go against the DevOps principle - you know - <em>infrastructure as code</em> and all.</p>
-<p>Anyway, my personal website and blog is a straight forward Razor app based on ASP.NET Core. The build YAML was then very simple:</p>
-<pre><code>pool:
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta http-equiv=x-ua-compatible content="chrome=1"><meta charset=utf-8><meta name=robots content="index,follow"><meta name=apple-mobile-web-app-title content="Aashish Koirala"><meta name=application-name content="Aashish Koirala"><meta name=msapplication-TileColor content="#00aba9"><meta name=theme-color content="#ffffff"><meta charset=utf-8><meta name=generator content="Hugo 0.105.0"><meta name=viewport content="width=device-width,initial-scale=1"><title>Azure DevOps for CI and CD &#183; Aashish Koirala</title><meta name=description content><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/print.css media=print><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/poole.css><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/syntax.css><link type=text/css rel=stylesheet href=https://aashishkoirala.com/css/hyde.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700"><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://aashishkoirala.com/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://aashishkoirala.com/apple-touch-icon.png><link rel="shortcut icon" href=https://aashishkoirala.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://aashishkoirala.com/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://aashishkoirala.com/favicon-16x16.png><link rel=manifest href=https://aashishkoirala.com/site.webmanifest><link rel=mask-icon href=https://aashishkoirala.com/favicon-safari-pinned-tab.svg color=#5bbad5><meta property="og:title" content="Azure DevOps for CI and CD"><meta property="og:description" content="I set up CI and CD for two of my applications using Azure DevOps. It was quite easy. Setting up the build pipeline is as simple as including a YAML file in your source repository. It then just comes down to knowing how the build YAML schema works. As far as the release (or deployment) pipeline is concerned, though, I could not find a similar method. I had to set it up through the Azure DevOps UI."><meta property="og:type" content="article"><meta property="og:url" content="https://aashishkoirala.com/blog/tech/azure-devops-for-ci-and-cd/"><meta property="og:image" content="https://aashishkoirala.com/logo.png"><meta property="article:section" content="blog"><meta property="article:published_time" content="2018-11-01T00:00:00+00:00"><meta property="article:modified_time" content="2018-11-01T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://aashishkoirala.com/logo.png"><meta name=twitter:title content="Azure DevOps for CI and CD"><meta name=twitter:description content="I set up CI and CD for two of my applications using Azure DevOps. It was quite easy. Setting up the build pipeline is as simple as including a YAML file in your source repository. It then just comes down to knowing how the build YAML schema works. As far as the release (or deployment) pipeline is concerned, though, I could not find a similar method. I had to set it up through the Azure DevOps UI."></head><body class=theme-base-0d><aside class=sidebar><div class="container sidebar-sticky"><div class=sidebar-about><a href=https://aashishkoirala.com/><img src=https://aashishkoirala.com/logo.png alt="Aashish Koirala Software Developer. Overthinker."><h1>aashish<b>koirala</b></h1></a><p class=lead>Software Developer. Overthinker.</p></div><nav><ul class=sidebar-nav><li><a href=https://aashishkoirala.com/>Home</a></li><li><a href=/about>About Me</a></li><li><a href=https://github.com/aashishkoirala/>Github</a></li><li><a href=https://twitter.com/aashishkoirala/>Twitter</a></li><li><a href=https://www.linkedin.com/in/aashishkoirala/>LinkedIn</a></li><li><a href=/blog/tech>Blog Posts - Tech</a></li><li><a href=/blog/nontech>Blog Posts - Non-Tech</a></li><li><a href=/index.xml>Subscribe (RSS)</a></li></ul></nav><p>&copy; 2022. All rights reserved.</p></div></aside><main class="content container"><div class=post><h1>Azure DevOps for CI and CD</h1><time datetime=2018-11-01T00:00:00Z class=post-date>Thu, Nov 1, 2018</time><p>I set up CI and CD for two of my applications using <a href=https://azure.microsoft.com/en-us/services/devops/>Azure DevOps</a>. It was quite easy. Setting up the build pipeline is as simple as including a YAML file in your source repository. It then just comes down to knowing <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema">how the build YAML schema works</a>. As far as the release (or deployment) pipeline is concerned, though, I could not find a similar method. I had to set it up through the Azure DevOps UI. I don&rsquo;t know if there is some information I am missing, but that would seem to somewhat go against the DevOps principle - you know - <em>infrastructure as code</em> and all.</p><p>Anyway, my personal website and blog is a straight forward Razor app based on ASP.NET Core. The build YAML was then very simple:</p><pre><code>pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
@@ -84,11 +21,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
 displayName: 'Publish Build Artifacts' 
-</code></pre>
-<p>Things to note here - at first, it was not obvious to me that I need to actually publish the build artifacts for it to be available further down the pipeline. Once I figured that out, though, the built-in task makes this easy. I did have to zip up my folder, though. It&rsquo;s a good idea, anyway, as it&rsquo;s easier than uploading a gazillion files, but I couldn&rsquo;t get it to work without zipping it up. Second, even though I am running the build on a Windows machine, I could just as easily have picked a Linux box since this is .NET Core.</p>
-<p>My release pipeline is pretty simple - there are no multiple stages, and it just comes down to one task - the <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=vsts&tabs=yaml">Azure App Service deploy</a> task.</p>
-<p>I guess the only difference with my other application, <a href=https://aashishkoirala.com/blog/tech/listor-showcasing-react-and-dotnet-core/>Listor</a>, is that it is a React based SPA with a .NET Core backend. So the build is a little more involved. I therefore found it easier to just write a custom PowerShell script and call that from the build YAML rather than messing around with it in YAML.</p>
-<pre><code>$ErrorActionPreference = &quot;Stop&quot;
+</code></pre><p>Things to note here - at first, it was not obvious to me that I need to actually publish the build artifacts for it to be available further down the pipeline. Once I figured that out, though, the built-in task makes this easy. I did have to zip up my folder, though. It&rsquo;s a good idea, anyway, as it&rsquo;s easier than uploading a gazillion files, but I couldn&rsquo;t get it to work without zipping it up. Second, even though I am running the build on a Windows machine, I could just as easily have picked a Linux box since this is .NET Core.</p><p>My release pipeline is pretty simple - there are no multiple stages, and it just comes down to one task - the <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/webapp?view=vsts&tabs=yaml">Azure App Service deploy</a> task.</p><p>I guess the only difference with my other application, <a href=https://aashishkoirala.com/blog/tech/listor-showcasing-react-and-dotnet-core/>Listor</a>, is that it is a React based SPA with a .NET Core backend. So the build is a little more involved. I therefore found it easier to just write a custom PowerShell script and call that from the build YAML rather than messing around with it in YAML.</p><pre><code>$ErrorActionPreference = &quot;Stop&quot;
 Push-Location AK.Listor.WebClient
 Write-Host &quot;Installing web client dependencies...&quot;
 npm install
@@ -117,16 +50,14 @@ Write-Host &quot;Copying new files...&quot;
 	Write-Host &quot;$SourceFile --&gt; $TargetFile&quot;
 	$TargetDirectory = [System.IO.Path]::GetDirectoryName($TargetFile)
 	If (-Not [System.IO.Directory]::Exists($TargetDirectory)) {
-        [System.IO.Directory]::CreateDirectory($TargetDirectory) | Out-Null
+		[System.IO.Directory]::CreateDirectory($TargetDirectory) | Out-Null
 	}
 	[System.IO.File]::Copy($SourceFile, $TargetFile, $True) | Out-Null
 }
 Write-Host &quot;Building application...&quot;
 dotnet build
 If ($LastExitCode -Ne 0) { Throw &quot;dotnet build failed.&quot; }
-</code></pre>
-<p>The build YAML, then is simple enough:</p>
-<pre><code>pool:
+</code></pre><p>The build YAML, then is simple enough:</p><pre><code>pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
@@ -149,25 +80,8 @@ steps:
 
 - task: PublishBuildArtifacts@1
 displayName: 'Publish Build Artifacts'
-</code></pre>
-<p>The release pipeline, of course, is identical since both these applications are hosted as app services on Azure. Since deploying these applications to production, I have had to make a few changes and this CI/CD pipeline has proved very helpful.</p>
-<div style=font-size:smaller>
-<br><br>
-Tags:
-<a href=https://aashishkoirala.com/tags/devops/>devops</a> <a href=https://aashishkoirala.com/tags/azure/>azure</a> <a href=https://aashishkoirala.com/tags/ci/>ci</a> <a href=https://aashishkoirala.com/tags/cd/>cd</a> <a href=https://aashishkoirala.com/tags/azuredevops/>azuredevops</a> <a href=https://aashishkoirala.com/tags/build/>build</a> <a href=https://aashishkoirala.com/tags/release/>release</a> <a href=https://aashishkoirala.com/tags/yaml/>yaml</a>
-<br>Previous:
-<a href=https://aashishkoirala.com/blog/tech/on-service-fabric-kubernetes-and-docker/>On Service Fabric, Kubernetes and Docker</a>
-<br>Next:
-<a href=https://aashishkoirala.com/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>Running .NET Core Global Tools Without the SDK</a>
-</div>
-</div>
-<h2>Comments</h2>
-<div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//aashishkoirala.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-</main>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VD1W7LBR1"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-1VD1W7LBR1',{anonymize_ip:!1})}</script>
-</body>
-</html>
+</code></pre><p>The release pipeline, of course, is identical since both these applications are hosted as app services on Azure. Since deploying these applications to production, I have had to make a few changes and this CI/CD pipeline has proved very helpful.</p><div style=font-size:smaller><br><br>Tags:
+<a href=https://aashishkoirala.com/tags/devops/>devops</a> <a href=https://aashishkoirala.com/tags/azure/>azure</a> <a href=https://aashishkoirala.com/tags/ci/>ci</a> <a href=https://aashishkoirala.com/tags/cd/>cd</a> <a href=https://aashishkoirala.com/tags/azuredevops/>azuredevops</a> <a href=https://aashishkoirala.com/tags/build/>build</a> <a href=https://aashishkoirala.com/tags/release/>release</a> <a href=https://aashishkoirala.com/tags/yaml/>yaml</a><br>Previous:
+<a href=https://aashishkoirala.com/blog/tech/on-service-fabric-kubernetes-and-docker/>On Service Fabric, Kubernetes and Docker</a><br>Next:
+<a href=https://aashishkoirala.com/blog/tech/running-dotnet-core-global-tools-without-the-sdk/>Running .NET Core Global Tools Without the SDK</a></div></div><h2>Comments</h2><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//aashishkoirala.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></main><script async src="https://www.googletagmanager.com/gtag/js?id=G-1VD1W7LBR1"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-1VD1W7LBR1",{anonymize_ip:!1})}</script></body></html>
