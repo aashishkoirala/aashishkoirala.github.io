@@ -10,12 +10,11 @@ disqusShortname = "aashishkoirala"
   main = [
       {Name = "About Me", URL = "/about", weight = 1},
       {Name = "Github", URL = "https://github.com/aashishkoirala/", weight = 2},
-      {Name = "Twitter", URL = "https://twitter.com/aashishkoirala/", weight = 3},
-      {Name = "Mastodon", URL = "https://hachyderm.io/@aashishkoirala", weight = 4},
-      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/aashishkoirala/", weight = 5},
-      {Name = "Blog Posts - Tech", URL = "/blog/tech", weight = 6},
-      {Name = "Blog Posts - Non-Tech", URL = "/blog/nontech", weight = 7},
-      {Name = "Subscribe (RSS)", URL = "/index.xml", weight = 8}
+      {Name = "Threads", URL = "https://threads.net/@aashishkoirala/", weight = 3},
+      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/aashishkoirala/", weight = 4},
+      {Name = "Blog Posts - Tech", URL = "/blog/tech", weight = 5},
+      {Name = "Blog Posts - Non-Tech", URL = "/blog/nontech", weight = 6},
+      {Name = "Subscribe (RSS)", URL = "/index.xml", weight = 7}
   ]
 
 [params]
